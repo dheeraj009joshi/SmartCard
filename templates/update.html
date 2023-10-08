@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details  {{ user.UserID }}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .section-heading {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>User Details Form for {{ user.UserID }}</h2>
+        
+        <form action="{{ url_for('update_user') }}" method="post"enctype="multipart/form-data">
+            <input type="hidden" class="form-control" id="Email" name="UserID" value='{{ user.UserID }}' required >
+          <div class="section-heading">Personal Information</div>
+          <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <label class="form-label">Email:</label>
+                      <input type="text" class="form-control" id="Email" name="Email" value='{{ user.Authentication.Username }}' required>
+                  </div>
+                  <!-- Other personal information fields can go here -->
+                  
+                  <div class="form-group">
+                    <label class="form-label">First Name:</label>
+                    <input type="text" class="form-control" id="FName" name="FName" value='{{ user.FirstName }}'required>
+                  </div>
+                  <div class="form-group">
+                    <label  calss="form-label" for="ProfileImage">Profile Image:</label>
+                    <input type="file" class="form-control" id="ProfileImage" name="ProfileImage" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label id="ProfilePreviewLabel">In Use:</label>
+                    <img id="ProfilePreviewImage" src="{{ user.ProfileImage }}" alt="Preview" style="max-width: 100px; max-height: 100px;">
+                </div>
+                  <div class="form-group">
+                    <label class="form-label">Contact:</label>
+                    <input type="text" class="form-control" id="Contact" name="Contact"value='{{ user.Contact }}'  >
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Business Name:</label>
+                    <input type="text" class="form-control" id="BusinessName" name="BusinessName" value='{{ user.BusinessName }}'  >
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Website:</label>
+                    <input type="text" class="form-control" id="Website" name="Website" value='{{ user.Website }}'  >
+                  </div>
+                </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Password:</label>
+                  <input type="text" class="form-control" id="Password" name="Password" value='{{ user.Authentication.Password }}' required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Last Name:</label>
+                  <input type="text" class="form-control" id="LName" name="LName" value='{{ user.LastName }}' >
+                </div>
+                <div class="form-group">
+                    <label  calss="form-label" for="ProfileImage">Cover Image:</label>
+                    <input type="file" class="form-control" id="CoverImage" name="CoverImage" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label id="CoverPreviewLabel">In Use:</label>
+                    <img id="CoverPreviewImage" src="{{ user.CoverImage }}" alt="Preview" style="max-width: 100px; max-height: 100px;">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Position:</label>
+                    <input type="text" class="form-control" id="Position" name="Position" value='{{ user.Position }}'  >
+                  </div>
+                <div class="form-group">
+                  <label class="form-label">DOB:</label>
+                  <input type="text" class="form-control" id="DOB" name="DOB" value='{{ user.DOB }}' >
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Designation:</label>
+                  <input type="text" class="form-control" id="Designation" name="Designation" value='{{ user.Designation }}' >
+                </div>
+                
+                  <!-- Additional personal information fields can go here -->
+              </div>
+          </div>
+
+          <div class="section-heading">Socials</div>
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label class="form-label">Instagram:</label>
+                      <input type="text" class="form-control" id="twitter" name="Instagram" value='{{ user.Socials.Instagram }}'>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Facebook:</label>
+                    <input type="text" class="form-control" id="Facebook" name="Facebook"  value='{{ user.Socials.Facebook }}'>
+                </div>
+                  <div class="form-group">
+                      <label class="form-label">YouTube:</label>
+                      <input type="text" class="form-control" id="YouTube" name="YouTube"  value='{{ user.Socials.YouTube }}'>
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">DriveLink:</label>
+                      <input type="text" class="form-control" id="DriveLink" name="DriveLink"  value='{{ user.Socials.DriveLink }}'>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label class="form-label">LinkedIn:</label>
+                      <input type="text" class="form-control" id="linkedin" name="LinkedIn"  value='{{ user.Socials.LinkedIn }}'>
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">SnapChat:</label>
+                      <input type="text" class="form-control" id="SnapChat" name="SnapChat" value='{{ user.Socials.SnapChat }}' >
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">GoogleMapUrl:</label>
+                      <input type="text" class="form-control" id="GoogleMapUrl" name="GoogleMapUrl"  value='{{ user.Socials.GoogleMapUrl }}' >
+                  </div>
+                  <!-- Additional social media fields can go here -->
+              </div>
+          </div>
+
+          <div class="section-heading">About</div>
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="form-group">
+                      <label class="form-label">About Text:</label>
+                      <textarea class="form-control" id="aboutText" name="aboutText" rows="4" value='{{ user.About.AboutText }}'></textarea>
+                  </div>
+              </div>
+          </div>
+
+          <div class="section-heading">Payments</div>
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label class="form-label">PayPal:</label>
+                      <input type="text" class="form-control" id="paypal" name="paypal" value='{{ user.Payment.PayPal }}'>
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">Paytm:</label>
+                      <input type="text" class="form-control" id="Paytm" name="Paytm"  value='{{ user.Payment.Paytm }}'>
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">PhonePe:</label>
+                      <input type="text" class="form-control" id="PhonePe" name="PhonePe"  value='{{ user.Payment.PhonePe }}'>
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">GooglePay:</label>
+                      <input type="text" class="form-control" id="GooglePay" name="GooglePay"  value='{{ user.Payment.GooglePay }}'>
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">UPI:</label>
+                      <input type="text" class="form-control" id="UPI" name="UPI"  value='{{ user.Payment.UPI }}'>
+                  </div>
+                  
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label class="form-label">Bank Name:</label>
+                      <input type="text" class="form-control" id="BankName" name="BankName"  value='{{ user.Payment.BankName }}'>
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">Bank Account Holder:</label>
+                      <input type="text" class="form-control" id="AccountHolderName" name="AccountHolderName"  value='{{ user.Payment.AccountHolderName }}'>
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">Account Number:</label>
+                      <input type="text" class="form-control" id="AccountNumber" name="AccountNumber"  value='{{ user.Payment.AccountNumber }}'>
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">IFSC Code:</label>
+                      <input type="text" class="form-control" id="IFSC" name="IFSC"  value='{{ user.Payment.IFSC }}'>
+                  </div>
+                  
+                  <!-- Additional payment fields can go here -->
+              </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>$(document).ready(function() {
+    $('#ProfileImage').change(function() {
+        var input = this;
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#ProfilePreviewImage').attr('src', e.target.result);
+                $('#ProfilePreviewLabel').text('Preview'); // Change the text to 'Preview'
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    });
+
+    $('#CoverImage').change(function() {
+        var input = this;
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#CoverPreviewImage').attr('src', e.target.result);
+                $('#CoverPreviewLabel').text('Preview'); // Change the text to 'Preview'
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    });
+});</script>
+    <!-- Bootstrap JS and dependencies (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

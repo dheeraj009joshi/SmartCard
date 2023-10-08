@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8">
+    <title>bixid-login</title>
+    <meta name="referrer" content="same-origin">
+    <link rel="canonical" href="https://bixid.in/bixid-login.html">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="twitter:card" content="summary">
+    <meta property="og:title" content="bixid-login">
+    <meta property="og:type" content="website">
+    <meta name="viewport" content="width=320">
+    <link rel="preload" href="css/HankenGrotesk[wght].woff2" as="font" crossorigin>
+    <style>
+        html,
+        body {
+            -webkit-text-zoom: reset !important
+        }
+
+        @-webkit-keyframes fadeIn {
+            0% {
+                opacity: 0
+            }
+
+            100% {
+                opacity: 1
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0
+            }
+
+            100% {
+                opacity: 1
+            }
+        }
+
+        .fadeIn {
+            -webkit-animation-name: fadeIn;
+            animation-name: fadeIn
+        }
+
+        @-webkit-keyframes fadeOut {
+            0% {
+                opacity: 1
+            }
+
+            100% {
+                opacity: 0
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1
+            }
+
+            100% {
+                opacity: 0
+            }
+        }
+
+        .fadeOut {
+            -webkit-animation-name: fadeOut;
+            animation-name: fadeOut
+        }
+
+        .modal {
+            margin-left: var(--sw);
+            overflow: hidden
+        }
+
+        .popup::-webkit-scrollbar {
+            display: none
+        }
+
+        .popup div::-webkit-scrollbar {
+            display: none
+        }
+
+        @font-face {
+            font-display: block;
+            font-family: "Hanken Grotesk";
+            src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+            font-weight: 200;
+            font-style: normal
+        }
+
+        @font-face {
+            font-display: block;
+            font-family: "Hanken Grotesk";
+            src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+            font-weight: 400;
+            font-style: normal
+        }
+
+        @font-face {
+            font-display: block;
+            font-family: "Lato";
+            src: url('css/Lato-Regular.woff2') format('woff2'), url('css/Lato-Regular.woff') format('woff');
+            font-weight: 400
+        }
+
+        @font-face {
+            font-display: block;
+            font-family: "Hanken Grotesk";
+            src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+            font-weight: 500;
+            font-style: normal
+        }
+
+        @font-face {
+            font-display: block;
+            font-family: "Hanken Grotesk";
+            src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+            font-weight: 800;
+            font-style: normal
+        }
+
+        @font-face {
+            font-display: block;
+            font-family: "Hanken Grotesk";
+            src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+            font-weight: 300;
+            font-style: normal
+        }
+
+        body>div {
+            font-size: 0
+        }
+
+        p,
+        span,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        a,
+        li {
+            margin: 0;
+            word-spacing: normal;
+            word-wrap: break-word;
+            -ms-word-wrap: break-word;
+            pointer-events: auto;
+            -ms-text-size-adjust: none !important;
+            -moz-text-size-adjust: none !important;
+            -webkit-text-size-adjust: none !important;
+            text-size-adjust: none !important;
+            max-height: 10000000px
+        }
+
+        sup {
+            font-size: inherit;
+            vertical-align: baseline;
+            position: relative;
+            top: -0.4em
+        }
+
+        sub {
+            font-size: inherit;
+            vertical-align: baseline;
+            position: relative;
+            top: 0.4em
+        }
+
+        ul {
+            display: block;
+            word-spacing: normal;
+            word-wrap: break-word;
+            line-break: normal;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            -moz-padding-start: 0;
+            -khtml-padding-start: 0;
+            -webkit-padding-start: 0;
+            -o-padding-start: 0;
+            -padding-start: 0;
+            -webkit-margin-before: 0;
+            -webkit-margin-after: 0
+        }
+
+        li {
+            display: block;
+            white-space: normal
+        }
+
+        [data-marker]::before {
+            content: attr(data-marker) ' ';
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none
+        }
+
+        li p {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none
+        }
+
+        form {
+            display: inline-block
+        }
+
+        a {
+            text-decoration: inherit;
+            color: inherit;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+        }
+
+        textarea {
+            resize: none
+        }
+
+        .shm-l {
+            float: left;
+            clear: left
+        }
+
+        .shm-r {
+            float: right;
+            clear: right
+        }
+
+        .btf {
+            display: none
+        }
+
+        .plyr {
+            min-width: 0 !important
+        }
+
+        html {
+            font-family: sans-serif
+        }
+
+        body {
+            font-size: 0;
+            margin: 0;
+            --z: 1;
+            zoom: var(--z)
+        }
+
+        audio,
+        video {
+            display: inline-block;
+            vertical-align: baseline
+        }
+
+        audio:not([controls]) {
+            display: none;
+            height: 0
+        }
+
+        [hidden],
+        template {
+            display: none
+        }
+
+        a {
+            background: 0 0;
+            outline: 0
+        }
+
+        b,
+        strong {
+            font-weight: 700
+        }
+
+        dfn {
+            font-style: italic
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: 1em;
+            line-height: 1;
+            margin: 0
+        }
+
+        img {
+            border: 0
+        }
+
+        svg:not(:root) {
+            overflow: hidden
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            color: inherit;
+            font: inherit;
+            margin: 0
+        }
+
+        button {
+            overflow: visible
+        }
+
+        button,
+        select {
+            text-transform: none
+        }
+
+        button,
+        html input[type=button],
+        input[type=submit] {
+            -webkit-appearance: button;
+            cursor: pointer;
+            box-sizing: border-box;
+            white-space: normal
+        }
+
+        input[type=date],
+        input[type=email],
+        input[type=number],
+        input[type=password],
+        input[type=text],
+        textarea {
+            -webkit-appearance: none;
+            appearance: none;
+            box-sizing: border-box
+        }
+
+        button[disabled],
+        html input[disabled] {
+            cursor: default
+        }
+
+        button::-moz-focus-inner,
+        input::-moz-focus-inner {
+            border: 0;
+            padding: 0
+        }
+
+        input {
+            line-height: normal
+        }
+
+        input[type=checkbox],
+        input[type=radio] {
+            box-sizing: border-box;
+            padding: 0
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            height: auto
+        }
+
+        input[type=search] {
+            -webkit-appearance: textfield;
+            -moz-box-sizing: content-box;
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box
+        }
+
+        input[type=search]::-webkit-search-cancel-button,
+        input[type=search]::-webkit-search-decoration {
+            -webkit-appearance: none
+        }
+
+        textarea {
+            overflow: auto;
+            box-sizing: border-box;
+            border-color: #ddd
+        }
+
+        optgroup {
+            font-weight: 700
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+
+        td,
+        th {
+            padding: 0
+        }
+
+        blockquote {
+            margin-block-start: 0;
+            margin-block-end: 0;
+            margin-inline-start: 0;
+            margin-inline-end: 0
+        }
+
+        :-webkit-full-screen-ancestor:not(iframe) {
+            -webkit-clip-path: initial !important
+        }
+
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale
+        }
+
+        #b {
+            background-color: transparent
+        }
+
+        .v10 {
+            display: block;
+            vertical-align: top
+        }
+
+        .ps85 {
+            position: relative;
+            margin-top: 0
+        }
+
+        .s93 {
+            width: 100%;
+            min-width: 320px;
+            min-height: 111px;
+            padding-bottom: 0
+        }
+
+        .c20 {
+            border: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            background-color: #fff
+        }
+
+        .z76 {
+            z-index: 1;
+            pointer-events: none
+        }
+
+        .ps86 {
+            display: inline-block;
+            width: 0;
+            height: 0
+        }
+
+        .s94 {
+            width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: 111px
+        }
+
+        .v11 {
+            display: inline-block;
+            vertical-align: top
+        }
+
+        .ps87 {
+            position: relative;
+            margin-left: 20px;
+            margin-top: 0
+        }
+
+        .s95 {
+            min-width: 290px;
+            width: 290px;
+            overflow: hidden;
+            height: 111px
+        }
+
+        .z77 {
+            z-index: 2;
+            pointer-events: auto
+        }
+
+        .p11 {
+            padding-bottom: 0;
+            text-align: center;
+            text-indent: 0;
+            padding-right: 0
+        }
+
+        .f36 {
+            font-family: "Hanken Grotesk";
+            font-size: 61px;
+            font-size: calc(61px * var(--f));
+            line-height: 1.821;
+            font-weight: 200;
+            font-style: normal;
+            text-decoration: underline;
+            text-transform: none;
+            letter-spacing: normal;
+            color: #000;
+            background-color: initial;
+            text-shadow: none
+        }
+
+        .f37 {
+            font-family: "Hanken Grotesk";
+            font-size: 61px;
+            font-size: calc(61px * var(--f));
+            line-height: 1.821;
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: underline;
+            text-transform: none;
+            letter-spacing: normal;
+            color: #000;
+            background-color: initial;
+            text-shadow: none
+        }
+
+        .c22 {
+            display: block;
+            position: relative;
+            pointer-events: none;
+            width: max(320px, 100%);
+            overflow: hidden;
+            margin-top: 47px;
+            min-height: 402px
+        }
+
+        .ps88 {
+            position: relative;
+            margin-top: 16px
+        }
+
+        .s96 {
+            width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: 366px
+        }
+
+        .z78 {
+            pointer-events: none
+        }
+
+        .ps89 {
+            position: relative;
+            margin-left: 15px;
+            margin-top: 0
+        }
+
+        .s97 {
+            min-width: 291px;
+            width: 291px;
+            min-height: 366px
+        }
+
+        .ps90 {
+            position: relative;
+            margin-left: 0;
+            margin-top: 0
+        }
+
+        .s98 {
+            min-width: 291px;
+            width: 291px;
+            min-height: 366px;
+            line-height: 0
+        }
+
+        .v12 {
+            display: inline-block;
+            vertical-align: top;
+            pointer-events: auto
+        }
+
+        .ps91 {
+            position: relative;
+            margin-left: 1px;
+            margin-top: 0
+        }
+
+        .s99 {
+            min-width: 289px;
+            width: 289px;
+            min-height: 366px
+        }
+
+        .c23 {
+            border: 0;
+            -webkit-border-radius: 9px;
+            -moz-border-radius: 9px;
+            border-radius: 9px;
+            background-color: #f7f7f7;
+            box-shadow: 0 2px 18px rgba(0, 0, 0, .4)
+        }
+
+        .z79 {
+            z-index: 2146435072;
+            pointer-events: auto
+        }
+
+        .ps92 {
+            position: relative;
+            margin-left: 251px;
+            margin-top: 14px
+        }
+
+        .s100 {
+            min-width: 28px;
+            width: 28px;
+            height: 28px;
+            box-sizing: border-box
+        }
+
+        .c24 {
+            border: 0;
+            -webkit-border-radius: 14px;
+            -moz-border-radius: 14px;
+            border-radius: 14px;
+            background-color: #000;
+            background-image: url(images/close.svg);
+            background-size: cover;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            transition: color 0.20s, border-color 0.20s, background-color 0.20s, background-image 0.20s;
+            transition-timing-function: linear
+        }
+
+        .z80 {
+            z-index: 9
+        }
+
+        .a3 {
+            display: inline-block;
+            width: 100%;
+            height: 100%
+        }
+
+        .c24:hover {
+            background-color: #82939e;
+            background-clip: padding-box;
+            border-color: #000;
+            color: #000
+        }
+
+        .c24:active {
+            background-color: #52646f;
+            background-clip: padding-box;
+            transition: initial;
+            border-color: #000;
+            color: #f7f7f7
+        }
+
+        .ps93 {
+            position: relative;
+            margin-left: 75px;
+            margin-top: 13px
+        }
+
+        .s101 {
+            min-width: 138px;
+            width: 138px;
+            overflow: hidden;
+            height: 43px
+        }
+
+        .z81 {
+            z-index: 10
+        }
+
+        .f38 {
+            font-family: "Hanken Grotesk";
+            font-size: 14px;
+            font-size: calc(14px * var(--f));
+            line-height: 0.930;
+            font-weight: 500;
+            font-style: normal;
+            text-decoration: none;
+            text-transform: none;
+            letter-spacing: -0.99px;
+            color: #000;
+            background-color: initial;
+            text-shadow: none
+        }
+
+        .ps94 {
+            position: relative;
+            margin-left: 11px;
+            margin-top: -1px
+        }
+
+        .s102 {
+            min-width: 269px;
+            width: 269px;
+            height: 43px
+        }
+
+        .z82 {
+            z-index: 11
+        }
+
+        .input1 {
+            border: 1px solid #c0c0c0;
+            -webkit-border-radius: 22px;
+            -moz-border-radius: 22px;
+            border-radius: 22px;
+            background-color: #f7f7f7;
+            width: 269px;
+            height: 43px;
+            font-family: "Hanken Grotesk";
+            font-size: 14px;
+            line-height: 1.287;
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            text-transform: none;
+            letter-spacing: normal;
+            color: #000;
+            text-shadow: none;
+            text-indent: 14px;
+            padding-bottom: 0;
+            text-align: left;
+            padding: 0
+        }
+
+        .input1::placeholder {
+            color: rgb(169, 169, 169)
+        }
+
+        .ps95 {
+            position: relative;
+            margin-left: 55px;
+            margin-top: 22px
+        }
+
+        .s103 {
+            min-width: 179px;
+            width: 179px;
+            overflow: hidden;
+            height: 43px
+        }
+
+        .z83 {
+            z-index: 12
+        }
+
+        .ps96 {
+            position: relative;
+            margin-left: 10px;
+            margin-top: -1px
+        }
+
+        .z84 {
+            z-index: 13
+        }
+
+        .input2 {
+            border: 1px solid #c0c0c0;
+            -webkit-border-radius: 22px;
+            -moz-border-radius: 22px;
+            border-radius: 22px;
+            background-color: #f7f7f7;
+            width: 269px;
+            height: 43px;
+            font-family: "Hanken Grotesk";
+            font-size: 14px;
+            line-height: 1.287;
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            text-transform: none;
+            letter-spacing: normal;
+            color: #000;
+            text-shadow: none;
+            text-indent: 14px;
+            padding-bottom: 0;
+            text-align: left;
+            padding: 0
+        }
+
+        .input2::placeholder {
+            color: rgb(169, 169, 169)
+        }
+
+        .v13 {
+            display: inline-block;
+            vertical-align: top;
+            overflow: hidden;
+            outline: 0
+        }
+
+        .ps97 {
+            position: relative;
+            margin-left: 25px;
+            margin-top: 37px
+        }
+
+        .s104 {
+            min-width: 100px;
+            min-height: 34px;
+            box-sizing: border-box;
+            width: 100px;
+            height: 18px;
+            padding-right: 0
+        }
+
+        .c25 {
+            border: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            background-color: #000;
+            color: #f7f7f7;
+            transition: color 0.20s, border-color 0.20s, background-color 0.20s, background-image 0.20s;
+            transition-timing-function: linear
+        }
+
+        .z85 {
+            z-index: 14
+        }
+
+        .f39 {
+            font-family: "Hanken Grotesk";
+            font-size: 14px;
+            font-size: calc(14px * var(--f));
+            line-height: 1.287;
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            text-transform: none;
+            letter-spacing: normal;
+            text-shadow: none;
+            text-indent: 0;
+            text-align: center;
+            cursor: pointer;
+            padding-top: 8px;
+            padding-bottom: 8px
+        }
+
+        .c25:hover {
+            background-color: #82939e;
+            background-clip: padding-box;
+            border-color: #000;
+            color: #000
+        }
+
+        .c25:active {
+            background-color: #52646f;
+            background-clip: padding-box;
+            transition: initial;
+            border-color: #000
+        }
+
+        .ps98 {
+            position: relative;
+            margin-left: 34px;
+            margin-top: 37px
+        }
+
+        .c26 {
+            border: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            background-color: #808080;
+            color: #f7f7f7;
+            transition: color 0.20s, border-color 0.20s, background-color 0.20s, background-image 0.20s;
+            transition-timing-function: linear
+        }
+
+        .z86 {
+            z-index: 15
+        }
+
+        .c26:hover {
+            background-color: #82939e;
+            background-clip: padding-box;
+            border-color: #000;
+            color: #000
+        }
+
+        .c26:active {
+            background-color: #52646f;
+            background-clip: padding-box;
+            transition: initial;
+            border-color: #000
+        }
+
+        .ps99 {
+            position: relative;
+            margin-left: 0;
+            margin-top: -351px
+        }
+
+        .s105 {
+            min-width: 291px;
+            width: 291px;
+            min-height: 226px
+        }
+
+        .z87 {
+            z-index: 3
+        }
+
+        .s106 {
+            min-width: 290px;
+            width: 290px;
+            min-height: 168px
+        }
+
+        .z88 {
+            pointer-events: auto
+        }
+
+        .s107 {
+            min-width: 290px;
+            width: 290px;
+            height: 39px
+        }
+
+        .input3 {
+            border: 1px solid #c0c0c0;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            background-color: #f7f7f7;
+            width: 290px;
+            height: 39px;
+            font-family: "Hanken Grotesk";
+            font-size: 14px;
+            line-height: 1.287;
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            text-transform: none;
+            letter-spacing: normal;
+            color: #000;
+            text-shadow: none;
+            text-indent: 10px;
+            padding-bottom: 0;
+            text-align: left;
+            padding: 4px
+        }
+
+        .input3::placeholder {
+            color: rgb(169, 169, 169)
+        }
+
+        .ps100 {
+            position: relative;
+            margin-left: 0;
+            margin-top: 17px
+        }
+
+        .input4 {
+            border: 1px solid #c0c0c0;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            background-color: #f7f7f7;
+            width: 290px;
+            height: 39px;
+            font-family: "Hanken Grotesk";
+            font-size: 14px;
+            line-height: 1.287;
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            text-transform: none;
+            letter-spacing: normal;
+            color: #000;
+            text-shadow: none;
+            text-indent: 10px;
+            padding-bottom: 0;
+            text-align: left;
+            padding: 4px
+        }
+
+        .input4::placeholder {
+            color: rgb(169, 169, 169)
+        }
+
+        .ps101 {
+            position: relative;
+            margin-left: 80px;
+            margin-top: 30px
+        }
+
+        .s108 {
+            min-width: 126px;
+            min-height: 43px;
+            box-sizing: border-box;
+            width: 126px;
+            height: 21px;
+            padding-right: 0
+        }
+
+        .c27 {
+            border: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            background-color: #000;
+            color: #f7f7f7;
+            transition: color 0.20s, border-color 0.20s, background-color 0.20s, background-image 0.20s;
+            transition-timing-function: linear
+        }
+
+        .f40 {
+            font-family: "Hanken Grotesk";
+            font-size: 16px;
+            font-size: calc(16px * var(--f));
+            line-height: 1.313;
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            text-transform: none;
+            letter-spacing: normal;
+            text-shadow: none;
+            text-indent: 0;
+            text-align: center;
+            cursor: pointer;
+            padding-top: 11px;
+            padding-bottom: 11px
+        }
+
+        .c27:hover {
+            background-color: #268bd2;
+            background-clip: padding-box;
+            border-color: #000;
+            color: #000
+        }
+
+        .c27:active {
+            background-color: #268bd2;
+            background-clip: padding-box;
+            transition: initial;
+            border-color: #000
+        }
+
+        .ps102 {
+            position: relative;
+            margin-left: 0;
+            margin-top: 21px
+        }
+
+        .s109 {
+            min-width: 288px;
+            width: 288px;
+            overflow: hidden;
+            height: 37px
+        }
+
+        .f41 {
+            font-family: "Hanken Grotesk";
+            font-size: 10px;
+            font-size: calc(10px * var(--f));
+            line-height: 1.301;
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            text-transform: none;
+            letter-spacing: normal;
+            color: #dc322f;
+            background-color: initial;
+            text-shadow: none
+        }
+
+        .ps103 {
+            position: relative;
+            margin-left: 0;
+            margin-top: -105px
+        }
+
+        .s110 {
+            min-width: 288px;
+            width: 288px;
+            overflow: hidden;
+            height: 33px
+        }
+
+        .z89 {
+            z-index: 8;
+            pointer-events: auto
+        }
+
+        .f42 {
+            font-family: "Hanken Grotesk";
+            font-size: 16px;
+            font-size: calc(16px * var(--f));
+            line-height: 0.876;
+            font-weight: 500;
+            font-style: normal;
+            text-decoration: none;
+            text-transform: none;
+            letter-spacing: -0.99px;
+            color: #000;
+            background-color: initial;
+            text-shadow: none
+        }
+
+        .f43 {
+            font-family: "Hanken Grotesk";
+            font-size: 16px;
+            font-size: calc(16px * var(--f));
+            line-height: 0.876;
+            font-weight: 500;
+            font-style: normal;
+            text-decoration: underline;
+            text-transform: none;
+            letter-spacing: -0.99px;
+            color: #268bd2;
+            background-color: initial;
+            text-shadow: none
+        }
+
+        .c28 {
+            display: inline-block;
+            position: relative;
+            margin-left: 0;
+            margin-top: 0
+        }
+    </style>
+    <link onload="this.media='all';this.onload=null;" rel="stylesheet" href="css/site.e2225d.css" media="print">
+</head>
+
+<body id="b">
+    <script>var p = document.createElement("P"); p.innerHTML = "&nbsp;", p.style.cssText = "position:fixed;visible:hidden;font-size:100px;zoom:1", document.body.appendChild(p); var rsz = function (e) { return function () { var r = Math.trunc(1e3 / parseFloat(window.getComputedStyle(e).getPropertyValue("font-size"))) / 10, t = document.body; r != t.style.getPropertyValue("--f") && t.style.setProperty("--f", r) } }(p); if ("ResizeObserver" in window) { var ro = new ResizeObserver(rsz); ro.observe(p) } else if ("requestAnimationFrame" in window) { var raf = function () { rsz(), requestAnimationFrame(raf) }; requestAnimationFrame(raf) } else setInterval(rsz, 100);</script>
+
+    <div data-block-group="0" class="v10 ps85 s93 c20 z76">
+        <div class="ps86">
+        </div>
+        <div class="ps85 v10 s94">
+            <div class="v11 ps87 s95 c21 z77">
+                <p class="p11"><a href="./" class="f36">Bix<a href="./" class="f37">ID</a></a></p>
+            </div>
+        </div>
+    </div>
+    <div class="c22">
+        <div class="ps88 v10 s96 z78">
+            <div class="v11 ps89 s97">
+                <div class="v11 ps90 s98">
+                    <div id="popup4" style="visibility:hidden;transform:translate3d(-999999px,0,0)"
+                        class="popup v12 ps91 s99 c23 z79" data-popup-group="0" data-popup-type="0">
+                        <div class="v11 ps92 s100 c24 z80">
+                            <a onclick="return pop&&pop.closePopup('popup4',event)" style="cursor:pointer;" href="#"
+                                class="a3"></a>
+                        </div>
+                        <div class="v11 ps93 s101 c21 z81">
+                            <p class="p11 f38">Please enter the email address used to sign up</p>
+                        </div>
+                        <div class="v11 ps94 s102 c21 z82">
+                            <input type="email" placeholder="Email" name="Reset-email-input" autocorrect="off"
+                                autocapitalize="off" class="input1">
+                        </div>
+                        <div class="v11 ps95 s103 c21 z83">
+                            <p class="p11 f38">Please enter BixID card number printed behind your card</p>
+                        </div>
+                        <div class="v11 ps96 s102 c21 z84">
+                            <input type="email" placeholder="BixID card number" name="Reset-email-input"
+                                autocorrect="off" autocapitalize="off" class="input2">
+                        </div>
+                        <div class="v13 ps97 s104 c25 z85 f39">
+                            <p>Submit</p>
+                        </div>
+                        <div class="v13 ps98 s104 c26 z86">
+                            <a onclick="pop.openClosePopup('popup4')" style="cursor:pointer;" href="#"
+                                class="a3 f39">Login now</a>
+                        </div>
+                    </div>
+                    <div class="v11 ps99 s105 z87">
+                        <form method="post" action="{{ url_for('login') }}" class="v11 ps91 s106 z88">
+                            <div class="v11 ps90 s107 c21">
+                                <input type="text" placeholder="Username/email" name="username" required class="input3">
+                            </div>
+                            <div class="v11 ps100 s107 c21">
+                                <input type="password" placeholder="Password" name="password" required class="input4">
+                            </div>
+                            <div class="un1 v13 ps101 s108 c27">
+                                <a onclick="var p=this;while(p.nodeName!='FORM')p=p.parentNode;if('requestSubmit'in p){p.requestSubmit()}else{p.submit()}return false;"
+                                    class="a3 f40">Login</a>
+                            </div>
+                        </form>
+                        <div class="v11 ps102 s109 c21 z88">
+                            <p class="p11 f41">
+                                <script id="sf1">var values = { '99': 'Username and/or password are not correct' };
+                                    var urlParams = new URLSearchParams(window.location.search);
+                                    var value = urlParams.get('err');
+                                    if (value !== null) {
+                                        if (values[value] === undefined) value = 'unknown';
+                                        if (values[value] !== undefined) value = values[value]; else value = '';
+                                    }
+                                    var el = document.getElementById('sf1');
+                                    el.outerHTML = value;
+                                </script>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="v11 ps103 s110 c21 z89">
+             <!--          <p class="p11 f42">Forgot password? Click <a onclick="return pop&&pop.openPopup('popup4',event)"
+                                style="cursor:pointer;" href="#" class="f43">here</a><span class="f43"> </span>to reset
+                        </p>--> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="c28">
+    </div>
+    <script>!function () { if ("Promise" in window && void 0 !== window.performance) { var e, t, r = document, n = function () { return r.createElement("link") }, o = new Set, a = n(), i = a.relList && a.relList.supports && a.relList.supports("prefetch"), s = location.href.replace(/#[^#]+$/, ""); o.add(s); var c = function (e) { var t = location, r = "http:", n = "https:"; if (e && e.href && e.origin == t.origin && [r, n].includes(e.protocol) && (e.protocol != r || t.protocol != n)) { var o = e.pathname; if (!(e.hash && o + e.search == t.pathname + t.search || "?preload=no" == e.search.substr(-11) || ".html" != o.substr(-5) && ".html" != o.substr(-5) && "/" != o.substr(-1))) return !0 } }, u = function (e) { var t = e.replace(/#[^#]+$/, ""); if (!o.has(t)) { if (i) { var a = n(); a.rel = "prefetch", a.href = t, r.head.appendChild(a) } else { var s = new XMLHttpRequest; s.open("GET", t, s.withCredentials = !0), s.send() } o.add(t) } }, p = function (e) { return e.target.closest("a") }, f = function (t) { var r = t.relatedTarget; r && p(t) == r.closest("a") || e && (clearTimeout(e), e = void 0) }, d = { capture: !0, passive: !0 }; r.addEventListener("touchstart", function (e) { t = performance.now(); var r = p(e); c(r) && u(r.href) }, d), r.addEventListener("mouseover", function (r) { if (!(performance.now() - t < 1200)) { var n = p(r); c(n) && (n.addEventListener("mouseout", f, { passive: !0 }), e = setTimeout(function () { u(n.href), e = void 0 }, 80)) } }, d) } }(); dpth = "/"; !function () { var e = {}, t = {}, n = {}; window.ld = function (a, r, o) { var c = function () { "interactive" == document.readyState ? (r && r(), document.addEventListener("readystatechange", function () { "complete" == document.readyState && o && o() })) : "complete" == document.readyState ? (r && r(), o && o()) : document.addEventListener("readystatechange", function () { "interactive" == document.readyState && r && r(), "complete" == document.readyState && o && o() }) }, d = (1 << a.length) - 1, u = 0, i = function (r) { var o = a[r], i = function () { for (var t = 0; t < a.length; t++) { var r = (1 << t) - 1; if ((u & r) == r && n[a[t]]) { if (!e[a[t]]) { var o = document.createElement("script"); o.textContent = n[a[t]], document.body.appendChild(o), e[a[t]] = !0 } if ((u |= 1 << t) == d) return c(), 0 } } return 1 }; if (null == t[o]) { t[o] = []; var f = new XMLHttpRequest; f.open("GET", o, !0), f.onload = function () { n[o] = f.responseText, [].forEach.call(t[o], function (e) { e() }) }, t[o].push(i), f.send() } else { if (e[o]) return i(); t[o].push(i) } return 1 }; if (a.length) for (var f = 0; f < a.length && i(f); f++); else c() } }(); ld([], function () { !function () { var e = document.querySelectorAll('a[href^="#"]');[].forEach.call(e, function (e) { e.addEventListener("click", function (t) { var a = 0; if (e.hash.length > 1) { var n = parseFloat(getComputedStyle(document.body).getPropertyValue("zoom")); n || (n = 1); var o = e.hash.slice(1), r = document.getElementById(o); if (null === r && null === (r = document.querySelector('[name="' + o + '"]'))) return; var s = /chrome/i.test(navigator.userAgent); a = s ? r.getBoundingClientRect().top * n + pageYOffset : (r.getBoundingClientRect().top + pageYOffset) * n } if ("scrollBehavior" in document.documentElement.style) scroll({ top: a, left: 0, behavior: "smooth" }); else if ("requestAnimationFrame" in window) { var u = pageYOffset, i = null; requestAnimationFrame(function e(t) { i || (i = t); var n = (t - i) / 400; scrollTo(0, u < a ? (a - u) * n + u : u - (u - a) * n), n < 1 ? requestAnimationFrame(e) : scrollTo(0, a) }) } else scrollTo(0, a); t.preventDefault() }, !1) }) }(), window.smoothScroll = function (e, t, a, n) { e.stopImmediatePropagation(); var o = (t = document.querySelector(t)).getBoundingClientRect().top, r = parseFloat(getComputedStyle(document.body).getPropertyValue("zoom")); r || (r = 1); var s = /chrome/i.test(navigator.userAgent), u = window.pageYOffset, i = o * r + (s ? 0 : u * (r - 1)), c = null; function l() { m(window.performance.now ? window.performance.now() : Date.now()) } function m(e) { null === c && (c = e); var t = (e - c) / 1e3, o = function (e, t, a) { switch (n) { case "linear": break; case "easeInQuad": e *= e; break; case "easeOutQuad": e = 1 - (1 - e) * (1 - e); break; case "easeInCubic": e *= e * e; break; case "easeOutCubic": e = 1 - Math.pow(1 - e, 3); break; case "easeInOutCubic": e = e < .5 ? 4 * e * e * e : 1 - Math.pow(-2 * e + 2, 3) / 2; break; case "easeInQuart": e *= e * e * e; break; case "easeOutQuart": e = 1 - Math.pow(1 - e, 4); break; case "easeInOutQuart": e = e < .5 ? 8 * e * e * e * e : 1 - Math.pow(-2 * e + 2, 4) / 2; break; case "easeInQuint": e *= e * e * e * e; break; case "easeOutQuint": e = 1 - Math.pow(1 - e, 5); break; case "easeInOutQuint": e = e < .5 ? 16 * e * e * e * e * e : 1 - Math.pow(-2 * e + 2, 5) / 2; break; case "easeInCirc": e = 1 - Math.sqrt(1 - Math.pow(e, 2)); break; case "easeOutCirc": e = Math.sqrt(1 - Math.pow(0, 2)); break; case "easeInOutCirc": e = e < .5 ? (1 - Math.sqrt(1 - Math.pow(2 * e, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * e + 2, 2)) + 1) / 2; break; case "easeInOutQuad": default: e = e < .5 ? 2 * e * e : 1 - Math.pow(-2 * e + 2, 2) / 2 }e > 1 && (e = 1); return t + a * e }(t / a, u, i); window.scrollTo(0, o), t < a && ("requestAnimationFrame" in window ? requestAnimationFrame(m) : setTimeout(l, 1e3 / 120)) } return "requestAnimationFrame" in window ? requestAnimationFrame(m) : setTimeout(l, 1e3 / 120), !1 }; if (location.hash) { var e = location.hash.replace("#", ""), o = function () { var t = document.querySelectorAll('[name="' + e + '"]')[0]; t && t.scrollIntoView(), "0px" === window.getComputedStyle(document.body).getPropertyValue("min-width") && setTimeout(o, 100) }; o() } }); ld(["js/popup.6847ae.js"]);</script>
+</body>
+
+</html>
