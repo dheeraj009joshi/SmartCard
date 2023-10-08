@@ -1,13 +1,19 @@
 from flask import Flask, render_template, request, jsonify,redirect,session,url_for
 import json
-from flask_pymongo import PyMongo
+from pymongo import MongoClient
+# from flask_pymongo import PyMongo
 
 app = Flask(__name__, static_folder='static')
-app.config["MONGO_URI"] = "mongodb://localhost:27017/mydatabase"
+# app.config["MONGO_URI"] = "mongodb+srv://dlovej009:Dheeraj2006@cluster0.dnu8vna.mongodb.net/?retryWrites=true&w=majority/myDb"
+url="mongodb+srv://dlovej009:Dheeraj2006@cluster0.dnu8vna.mongodb.net/?retryWrites=true&w=majority"
+
+cluster=MongoClient(url)
+db=cluster['myDb']
+collection=db['users']
 app.secret_key = 'smart_card'
-mongo = PyMongo(app)
+# mongo = PyMongo(app)
 # from all_users import users
-users = list(mongo.db.users.find({}))
+users = list(collection.users.find({}))
 all_users = users
 print(all_users)
 
@@ -19,7 +25,7 @@ def home():
 @app.route('/<user_id>')
 def index(user_id):
     user = None
-    users = mongo.db.users.find({"UserID": user_id})
+    users = collection.users.find({"UserID": user_id})
     user_list = list(users)
     if user_list:
       if user_list[0]['Authentication']['Status_of_data'] == True:
@@ -54,7 +60,7 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        users = list(mongo.db.users.find({"Authentication.Username": username}))
+        users = list(collection.users.find({"Authentication.Username": username}))
         print(users)
         if username in users[0]['Authentication']['Username'] and users[0]['Authentication']['Password'] == password:
             users[0].pop("_id",None)
@@ -149,12 +155,12 @@ def update_user():
         "$set": userRecord
     }
         filter_criteria = {"UserID": uid}
-        mongo.db.users.update_one(filter_criteria, update_operation)
+        collection.users.update_one(filter_criteria, update_operation)
         return  redirect(f"/{uid}")
     else:
         print(request.referrer)
         uid=request.referrer.split("/")[-1]
-        users = mongo.db.users.find({"UserID": uid})
+        users = collection.users.find({"UserID": uid})
         user=(list(users))[0]
         return render_template('update.html',user=user)
         
@@ -238,7 +244,7 @@ def register():
     }
     # users.append(userRecord)
 
-    mongo.db.users.insert_one(userRecord)
+    collection.users.insert_one(userRecord)
     f=open("all_users.py",'w',encoding='utf-8')
     f.write("users = "+str(users))
     f.close()
