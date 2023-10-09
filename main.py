@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, jsonify,redirect,session,url_for
 import json
-from pymongo import MongoClient
 # from flask_pymongo import PyMongo
 # from all_users import users
 app = Flask(__name__, static_folder='static')
