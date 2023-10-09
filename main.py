@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify,redirect,session,url_for
 import json
+import os
 # from flask_pymongo import PyMongo
 # from all_users import users
 app = Flask(__name__, static_folder='static')
@@ -280,5 +281,5 @@ def register():
     else:
         return "non post"
   
-
-app.run(debug=True, host='0.0.0.0')
+port = int(os.environ.get('PORT', 5000))
+app.run(debug=True, host='0.0.0.0',port=port)
