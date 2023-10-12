@@ -3880,6 +3880,7 @@
           </div>
           <div class="v7 ps39 s48 c11 z27">
             <div class="v7 ps40 s49 c9 z28">
+              <a href="https://wa.me/{{ session['user'].Contact }}" class="a2 f30">
               <p class="p7 f21">
                 <x-svg class="s50"><svg style="fill: currentColor" height="100%" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512" role="graphics-object">
@@ -3889,6 +3890,7 @@
                     </path>
                   </svg></x-svg>
               </p>
+       </a>
             </div>
             <div class="v7 ps41 s51 c9 z29">
               <p class="p6">
@@ -3966,7 +3968,7 @@
               </a>
             </div>
             <div class="v7 ps47 s59 c9 z35">
-              <a href="tel:{{ session['user'].Contact }}"></a>
+              <a href="tel:{{ session['user'].Contact }}" target="_blank">
               <p class="p8 f26">
                 <x-svg class="s60"><svg style="fill: currentColor" height="100%" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24" role="graphics-object">
@@ -3983,7 +3985,7 @@
               </a>
             </div>
             <div class="v7 ps48 s61 c9 z36">
-              <a href="tel:{{ session['user'].Contact }}" target="_blank">
+              <a href="mailto:{{ session['user'].Authentication.Username }}" target="_blank">
                 <p class="p8 f26">
                   <x-svg class="s60"><svg style="fill: currentColor" height="100%" xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24" role="graphics-object">
@@ -4079,7 +4081,7 @@
               </p>
             </div>
             <div class="v7 ps57 s67 c9 z46">
-              <a href="tel:{{ session['user'].Website }}" target="_blank">
+              <a href="{{ session['user'].Website }}" target="_blank">
                 <p class="p8 f28">
                   <x-svg class="s68"><svg style="fill: currentColor" height="100%" xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 512 512" role="graphics-object">

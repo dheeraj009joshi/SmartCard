@@ -160,6 +160,10 @@ def update_user():
                 "Status_of_data": True,
             }
         }
+        if userRecord['ProfileImage']=='static/':
+            userRecord['ProfileImage']=request.form.get("UserProfileDefault")
+        if userRecord['CoverImage']=='static/':
+            userRecord['CoverImage']=request.form.get("UserCoverDefault")
        
         update_operation = {
         "$set": userRecord
