@@ -49,7 +49,7 @@ def index(user_id):
     else:
         # return "404 not valid card"
         # # No users found for the given email
-        return render_template('sign_up_form.html')
+        return render_template('sign_up_form.html',user_id=user_id)
     
     
 @app.route("/logout", methods=['GET', 'POST'])  
@@ -108,6 +108,7 @@ def update_user():
             "Contact": request.form.get("Contact"),
             "DOB":request.form.get("DOB"),
             "BusinessName": request.form.get("BusinessName"),
+            "Position": request.form.get("Position"),
             "Designation":request.form.get("Designation"),
             "Website":request.form.get("Website"),
             "Socials": {
@@ -129,7 +130,7 @@ def update_user():
                 "ZipCode":"",
                 "Latitude": 134.563252,
                 "Longitude": 185.5342678,
-                "MapUrl": "https://map.google.com/xyz…"
+              
             },
 
             "Gallery": {
@@ -140,13 +141,13 @@ def update_user():
                 "IMG5":"",
             },
             "Payment": {
-                "QRImage":"QRImage.jpg",
+                # "QRImage":"QRImage.jpg",
                 "PayPal": "johndoe_paypal@example.com",
-                "CreditCard": "**** **** **** 1234",
-                "BankName":"",
-                "AccountHolderName":"",
-                "AccountNumber":"",
-                "IFSC":"",
+                # "CreditCard": "**** **** **** 1234",
+                "BankName":request.form.get("BankName"),
+                "AccountHolderName":request.form.get("AccountHolderName"),
+                "AccountNumber":request.form.get("AccountNumber"),
+                "IFSC":request.form.get("IFSC"),
                 "GooglePay":request.form.get("GooglePay"),
                 "PhonePe":request.form.get("PhonePe"),
                 "Paytm":request.form.get("Paytm"),
@@ -220,6 +221,7 @@ def register():
             "Contact": request.form.get("Contact"),
             "DOB":request.form.get("DOB"),
             "BusinessName": request.form.get("BusinessName"),
+            "Position": request.form.get("Position"),
             "Designation":request.form.get("Designation"),
             "Website":request.form.get("Website"),
             "Socials": {
@@ -242,7 +244,7 @@ def register():
                 "ZipCode":"",
                 "Latitude": 134.563252,
                 "Longitude": 185.5342678,
-                "MapUrl": "https://map.google.com/xyz…"
+             
             },
 
             "Gallery": {
@@ -252,18 +254,18 @@ def register():
                 "IMG4":"",
                 "IMG5":"",
             },
-            "Payment": {
-                "QRImage":"QRImage.jpg",
+             "Payment": {
+                # "QRImage":"QRImage.jpg",
                 "PayPal": "johndoe_paypal@example.com",
-                "CreditCard": "**** **** **** 1234",
-                "BankName":"",
-                "AccountHolderName":"",
-                "AccountNumber":"",
-                "IFSC":"",
-                "GooglePay":"",
-                "PhonePe":"",
-                "Paytm":"",
-                "UPI":"",
+                # "CreditCard": "**** **** **** 1234",
+                "BankName":request.form.get("BankName"),
+                "AccountHolderName":request.form.get("AccountHolderName"),
+                "AccountNumber":request.form.get("AccountNumber"),
+                "IFSC":request.form.get("IFSC"),
+                "GooglePay":request.form.get("GooglePay"),
+                "PhonePe":request.form.get("PhonePe"),
+                "Paytm":request.form.get("Paytm"),
+                "UPI":request.form.get("UPI"),
             },
             
             

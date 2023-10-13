@@ -64,9 +64,14 @@
                   </div>
                   <!-- Other personal information fields can go here -->
                   
+                  
                   <div class="form-group">
-                    <label class="form-label">First Name:</label>
-                    <input type="text" class="form-control" id="FName" name="FName" value='{{ user.FirstName }}'required>
+                    <label class="form-label">Password:</label>
+                    <input type="text" class="form-control" id="Password" name="Password" value='{{ user.Authentication.Password }}' required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Confirm Password:</label>
+                    <input type="text" class="form-control" id="ConfirmPassword" name="ConfirmPassword"  required>
                   </div>
                   <div class="form-group">
                     <label  calss="form-label" for="ProfileImage">Profile Image:</label>
@@ -77,10 +82,7 @@
                     <label id="ProfilePreviewLabel">In Use:</label>
                     <img id="ProfilePreviewImage" src="{{ user.ProfileImage }}" alt="Preview" style="max-width: 100px; max-height: 100px;">
                 </div>
-                  <div class="form-group">
-                    <label class="form-label">Contact:</label>
-                    <input type="text" class="form-control" id="Contact" name="Contact"value='{{ user.Contact }}'  >
-                  </div>
+                  
                   <div class="form-group">
                     <label class="form-label">Business Name:</label>
                     <input type="text" class="form-control" id="BusinessName" name="BusinessName" value='{{ user.BusinessName }}'  >
@@ -92,13 +94,17 @@
                 </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-label">Password:</label>
-                  <input type="text" class="form-control" id="Password" name="Password" value='{{ user.Authentication.Password }}' required>
-                </div>
+                    <label class="form-label">First Name:</label>
+                    <input type="text" class="form-control" id="FName" name="FName" value='{{ user.FirstName }}'required>
+                  </div>
                 <div class="form-group">
                   <label class="form-label">Last Name:</label>
                   <input type="text" class="form-control" id="LName" name="LName" value='{{ user.LastName }}' >
                 </div>
+                <div class="form-group">
+                    <label class="form-label">Contact:</label>
+                    <input type="text" class="form-control" id="Contact" name="Contact"value='{{ user.Contact }}'  >
+                  </div>
                 <div class="form-group">
                     <label  calss="form-label" for="ProfileImage">Cover Image:</label>
                     <input type="hidden" class="form-control" id="Email" name="UserCoverDefault" value="{{ user.CoverImage }}" required >
@@ -110,11 +116,11 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Position:</label>
-                    <input type="text" class="form-control" id="Position" name="Position" value='{{ user.Position }}'  >
+                    <input type="text" class="form-control" id="Position" name="Position" value="{{ user.Position }}""  >
                   </div>
                 <div class="form-group">
                   <label class="form-label">DOB:</label>
-                  <input type="text" class="form-control" id="DOB" name="DOB" value='{{ user.DOB }}' >
+                  <input type="date" class="form-control" id="DOB" name="DOB" value='{{ user.DOB }}' >
                 </div>
                 <div class="form-group">
                   <label class="form-label">Designation:</label>
@@ -167,7 +173,7 @@
               <div class="col-md-12">
                   <div class="form-group">
                       <label class="form-label">About Text:</label>
-                      <textarea class="form-control" id="aboutText" name="aboutText" rows="4" value='{{ user.About.AboutText }}'></textarea>
+                      <textarea class="form-control" id="aboutText" name="aboutText" rows="4" value='{{ user.About.AboutText }}'>{{ user.About.AboutText }}</textarea>
                   </div>
               </div>
           </div>
