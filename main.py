@@ -256,7 +256,7 @@ def register():
             },
              "Payment": {
                 # "QRImage":"QRImage.jpg",
-                "PayPal": "johndoe_paypal@example.com",
+                "PayPal": request.form.get("paypal"),
                 # "CreditCard": "**** **** **** 1234",
                 "BankName":request.form.get("BankName"),
                 "AccountHolderName":request.form.get("AccountHolderName"),

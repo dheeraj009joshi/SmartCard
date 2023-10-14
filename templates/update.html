@@ -116,7 +116,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Position:</label>
-                    <input type="text" class="form-control" id="Position" name="Position" value="{{ user.Position }}""  >
+                    <input type="text" class="form-control" id="Position" name="Position" value="{{ user.Position }}" >
                   </div>
                 <div class="form-group">
                   <label class="form-label">DOB:</label>
@@ -214,11 +214,11 @@
                   </div>
                   <div class="form-group">
                       <label class="form-label">Account Number:</label>
-                      <input type="text" class="form-control" id="AccountNumber" name="AccountNumber"  value='{{ user.Payment.AccountNumber }}'>
+                      <input type="text" class="form-control" id="AccountNumber" maxlength =11  name="AccountNumber"  value='{{ user.Payment.AccountNumber }}'>
                   </div>
                   <div class="form-group">
                       <label class="form-label">IFSC Code:</label>
-                      <input type="text" class="form-control" id="IFSC" name="IFSC"  value='{{ user.Payment.IFSC }}'>
+                      <input type="text" class="form-control" id="IFSC" name="IFSC" maxlength=11   value='{{ user.Payment.IFSC }}'>
                   </div>
                   
                   <!-- Additional payment fields can go here -->

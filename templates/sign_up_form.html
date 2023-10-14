@@ -214,11 +214,12 @@
                   </div>
                   <div class="form-group">
                       <label class="form-label">Account Number:</label>
-                      <input type="text" class="form-control" id="AccountNumber" name="AccountNumber" >
+                      <input type="text" class="form-control" id="numberInput" maxlength=11 name="AccountNumber" >
+                      <p id="validationMessage"></p>
                   </div>
                   <div class="form-group">
                       <label class="form-label">IFSC Code:</label>
-                      <input type="text" class="form-control" id="IFSC" name="IFSC" >
+                      <input type="text" class="form-control" maxlength=11 id="IFSC" name="IFSC" >
                   </div>
                   
                   <!-- Additional payment fields can go here -->
@@ -228,7 +229,20 @@
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>$(document).ready(function() {
+<script>
+    function validateNumberInput() {
+        var numberInput = document.getElementById("numberInput").value;
+        if (numberInput.length === 11 && !isNaN(numberInput)) {
+            document.getElementById("validationMessage").textContent = "Valid 11-digit number.";
+        } else {
+            document.getElementById("validationMessage").textContent = "Please enter a valid 11-digit number.";
+        }
+    }
+    
+    
+    
+    
+    $(document).ready(function() {
     $('#ProfileImage').change(function() {
         var input = this;
         if (input.files && input.files[0]) {
