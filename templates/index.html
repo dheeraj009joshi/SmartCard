@@ -5018,33 +5018,28 @@
     pop.init();
   </script>
 
-  <!-- <script>
-    window.onload = function() {
-        document.getElementById("download_card").addEventListener("click", () => {
-            const data = this.document.getElementById("b");
-            console.log(data);
-            var opt = {
-                margin: 1,
-                filename: "document.pdf",
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jspdf: { unit: 'in', format: 'letter', orientation: 'portrait' }  // Corrected property name here
-            };
-            html2pdf().from(data).set(opt).save();
+  <script>
+    document.getElementById('download_card').addEventListener('click', function() {
+        var phoneNumber = '+1234567890'; // Replace this with the phone number you want to save
+        var contactName = 'John Doe'; // Replace this with the contact name
+
+        var link = document.createElement('a');
+        link.href = 'tel:' + encodeURIComponent(phoneNumber);
+        link.innerHTML = 'Click here to call ' + contactName;
+        document.body.appendChild(link);
+
+        var clickEvent = new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            view: window
         });
-    };
-</script> -->
+
+        link.dispatchEvent(clickEvent);
+
+        document.body.removeChild(link);
+    });
+</script>
 <!-- <script>
-  document.getElementById('download_card').addEventListener('click', function() {
-      html2canvas(document.getElementById('b')).then(function(canvas) {
-          var imgData = canvas.toDataURL('image/png');
-          var pdf = new jspdf('p', 'mm', 'a4');
-          pdf.addImage(imgData, 'PNG', 0, 0, canvas.width * 0.75, canvas.height * 0.75); // Adjust width and height as needed
-          pdf.save('output.pdf');
-      });
-  }); -->
-<!-- </script> -->
-<script>
 jQuery(document).ready(function () {
 	//////////////
 	//////////////
@@ -5084,7 +5079,7 @@ jQuery(document).ready(function () {
 	});
 	//////////////
 	//////////////
-});</script>
+});</script> -->
   </body>
 
 </html>
