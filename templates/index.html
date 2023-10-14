@@ -5019,67 +5019,38 @@
   </script>
 
   <script>
+    
+    var userObject = {{ session['user'] | tojson | safe }};
     document.getElementById('download_card').addEventListener('click', function() {
-        var phoneNumber = '+1234567890'; // Replace this with the phone number you want to save
-        var contactName = 'John Doe'; // Replace this with the contact name
+        var contactData = {
+            firstName: userObject.FirstName,
+            lastName: userObject.LastName,
+            phoneNumber: userObject.Contact,
+            emailAddress: userObject.Authentication.Username
+        };
 
-        var link = document.createElement('a');
-        link.href = 'tel:' + encodeURIComponent(phoneNumber);
-        link.innerHTML = 'Click here to call ' + contactName;
-        document.body.appendChild(link);
+        var vcfContent = `
+BEGIN:VCARD
+VERSION:3.0
+FN:${contactData.firstName} ${contactData.lastName}
+TEL:${contactData.phoneNumber}
+EMAIL:${contactData.emailAddress}
+END:VCARD
+`;
 
-        var clickEvent = new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-            view: window
-        });
-
-        link.dispatchEvent(clickEvent);
-
-        document.body.removeChild(link);
+        var blob = new Blob([vcfContent], { type: 'text/vcard' });
+        var url = window.URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = contactData.firstName+'.vcf';
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
     });
+
 </script>
-<!-- <script>
-jQuery(document).ready(function () {
-	//////////////
-	//////////////
-	$('#download_card').click(function () {
-		window.print();
 
-		//<!-- let wspFrame = document.getElementById('frame').contentWindow;
-		//wspFrame.focus();
-		//wspFrame.print(); -->
-	});
-	//////////////
-	//////////////
-
-	$('#btn-one').click(function () {
-		html2canvas(document.querySelector('#content')).then((canvas) => {
-			let base64image = canvas.toDataURL('image/png');
-			// console.log(base64image);
-			let pdf = new jsPDF('p', 'px', [1600, 1131]);
-			pdf.addImage(base64image, 'PNG', 15, 15, 1110, 360);
-			pdf.save('webtylepress-two.pdf');
-		});
-	});
-	//////////////
-	//////////////
-	$('#btn-two').click(function () {
-		html2canvas(
-			document
-				.querySelector('iframe')
-				.contentWindow.document.querySelector('.receipt-wrap'),
-		).then((canvas) => {
-			let base64image = canvas.toDataURL('image/png');
-			// console.log(base64image);
-			let pdf = new jsPDF('p', 'px', [1600, 1131]);
-			pdf.addImage(base64image, 'PNG', 15, 15, 1140, 966);
-			pdf.save('webtylepress-receipt.pdf');
-		});
-	});
-	//////////////
-	//////////////
-});</script> -->
   </body>
 
 </html>
