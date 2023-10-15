@@ -9111,33 +9111,21 @@
       var urlInput = document.getElementById("url-input");
       var urlToCopy = urlInput.value;
 
-      // Create a temporary input element
-      var tempInput = document.createElement("input");
+      // Use the Clipboard API to copy the URL to the clipboard
+      navigator.clipboard.writeText(urlToCopy).then(function () {
+          // Update the text of the "copy-status" element
+          document.getElementById("copy-status").textContent = "Copied!";
 
-      // Add the URL to the input value
-      tempInput.setAttribute("value", urlToCopy);
-
-      // Append the input to the body
-      document.body.appendChild(tempInput);
-
-      // Select the input
-      tempInput.select();
-
-      // Copy the selected text
-      document.execCommand("copy");
-
-      // Remove the input from the body
-      document.body.removeChild(tempInput);
-
-      // Update the text of the "copy-status" element
-      document.getElementById("copy-status").textContent = "Copied!";
-
-      // Hide the message after 2 seconds
-      setTimeout(function () {
-          document.getElementById("copy-status").textContent = "";
-      }, 2000);
+          // Hide the message after 2 seconds
+          setTimeout(function () {
+              document.getElementById("copy-status").textContent = "";
+              document.getElementById("copy-button").textContent = "Copy Link";
+          }, 2000);
+      }).catch(function (err) {
+          // Handle errors, if any
+          console.error('Failed to copy text: ', err);
+      });
   });
-  
   </script>
   <script>
     !(function () {

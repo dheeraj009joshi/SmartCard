@@ -13,11 +13,13 @@
     <div id="copy-status"></div>
 
     <script>
+        console.log("entred in js ")
         document.getElementById("copy-button").addEventListener("click", function () {
             // Get the URL from the input element
+            console.log("found copy-button ")
             var urlInput = document.getElementById("url-input");
             var urlToCopy = urlInput.value;
-
+            console.log(urlToCopy)
             // Copy the URL to the clipboard
             var tempInput = document.createElement("input");
             tempInput.value = urlToCopy;
