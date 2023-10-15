@@ -9006,7 +9006,7 @@
                 class="a5"></a>
             </div>
             <div class="v19 ps248 s300 c45 z236">
-              <a href="whatsapp://send?text=Check out this cool website: https://example.com" target="_blank">
+              <a href="whatsapp://send?text={{ current_url }}" target="_blank">
                 <p class="p19 f98"><x-svg class="s301"><svg style="fill:currentColor" height="100%"
                       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" role="graphics-object">
                       <title>What's App Square</title>
@@ -9017,7 +9017,7 @@
               </a>
             </div>
             <div class="v19 ps249 s302 c45 z237">
-              <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" target="_blank">
+              <a href="https://www.facebook.com/sharer/sharer.php?u={{ current_url }}" target="_blank">
                 <p class="p19 f99"><x-svg class="s303"><svg style="fill:currentColor" height="100%"
                       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="graphics-object">
                       <title>Facebook</title>
@@ -9028,7 +9028,7 @@
               </a>
             </div>
             <div class="v19 ps250 s302 c45 z238">
-              <a href="https://www.linkedin.com/shareArticle?url=https://example.com&title=Check out this cool website"
+              <a href="https://www.linkedin.com/shareArticle?url={{ current_url }}"
                 target="_blank">
                 <p class="p19 f100"><x-svg class="s304"><svg style="fill:currentColor" height="100%"
                       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" role="graphics-object">
@@ -9056,7 +9056,7 @@
                   </svg></x-svg></p>
             </div>
             <div class="v19 ps208 s302 c45 z241">
-              <a href="https://t.me/share/url?url=https://example.com&text=Check%20out%20this%20cool%20website%21"
+              <a href="https://t.me/share/url?url={{ current_url }}&text=Check%20out%20this%20cool%20website%21"
                 target="_blank">
                 <p class="p19 f100"><x-svg class="s304"><svg style="fill:currentColor" height="100%"
                       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" role="graphics-object">
@@ -9068,7 +9068,7 @@
               </a>
             </div>
             <div class="v19 ps253 s302 c45 z242">
-              <a href="https://pinterest.com/pin/create/button/?url=https://example.com&description=Check%20out%20this%20cool%20website"
+              <a href="https://pinterest.com/pin/create/button/?url={{ current_url }}&description=Check%20out%20this%20cool%20website"
                 target="_blank">
                 <p class="p19 f102"><x-svg class="s303"><svg style="fill:currentColor" height="100%"
                       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" role="graphics-object">
@@ -9080,7 +9080,7 @@
               </a>
             </div>
             <div class="v19 ps208 s308 c45 z243">
-              <a href="mailto:?subject=Check%20out%20this%20cool%20website&body=Hi%2C%0A%0ACheck%20out%20this%20cool%20website%3A%20https%3A%2F%2Fexample.com"
+              <a href="mailto:?subject=Check%20out%20this%20cool%20website&body={{ current_url }}"
                 target="_blank">
                 <p class="p19 f103"><x-svg class="s309"><svg style="fill:currentColor" height="100%"
                       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="graphics-object">
@@ -9093,10 +9093,10 @@
               </a>
             </div>
             <div class="v19 ps254 s310 c45 z244">
-              <input type="text" value="url-here" placeholder="url-copy" value="" name="text" class="input4">
+              <input type="text" id="url-input"   value="{{ current_url }}" name="text" class="input4">
             </div>
-            <div class="v20 ps255 s311 c56 z245 f104">
-              <p>Copy link</p>
+            <div id='copy-button'  class="v20 ps255 s311 c56 z245 f104">
+              <p id="copy-status">Copy link</p>
             </div>
           </div>
         </div>
@@ -9104,6 +9104,41 @@
     </div>
   </div>
   <div class="c18"></div>
+
+  <script>
+    document.getElementById("copy-button").addEventListener("click", function () {
+      // Get the URL from the input element
+      var urlInput = document.getElementById("url-input");
+      var urlToCopy = urlInput.value;
+
+      // Create a temporary input element
+      var tempInput = document.createElement("input");
+
+      // Add the URL to the input value
+      tempInput.setAttribute("value", urlToCopy);
+
+      // Append the input to the body
+      document.body.appendChild(tempInput);
+
+      // Select the input
+      tempInput.select();
+
+      // Copy the selected text
+      document.execCommand("copy");
+
+      // Remove the input from the body
+      document.body.removeChild(tempInput);
+
+      // Update the text of the "copy-status" element
+      document.getElementById("copy-status").textContent = "Copied!";
+
+      // Hide the message after 2 seconds
+      setTimeout(function () {
+          document.getElementById("copy-status").textContent = "";
+      }, 2000);
+  });
+  
+  </script>
   <script>
     !(function () {
       if ("Promise" in window && void 0 !== window.performance) {
@@ -9848,6 +9883,22 @@ END:VCARD
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
   </script>
 

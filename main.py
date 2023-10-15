@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify,redirect,session,url_for
 import json
+# from urllib.parse import quote
 import os
 # from flask_pymongo import PyMongo
 # from all_users import users
@@ -25,6 +26,7 @@ def home():
 
 @app.route('/<user_id>')
 def index(user_id):
+    current_url = request.url
     from all_users import users
     user_list  =[]
     for i in users:
@@ -37,19 +39,19 @@ def index(user_id):
             session['user']=user_list[0]
             try:
                 if user_list[0]['Authentication']['Username'] == session['username']:
-                    return render_template('index.html', user=user_list[0],login=True)
+                    return render_template('index.html', user=user_list[0],login=True,current_url=current_url)
                 else:   
-                    return render_template('index.html', user=user_list[0],login=False)
+                    return render_template('index.html', user=user_list[0],login=False,current_url=current_url)
             except:
-                return render_template('index.html', user=user_list[0],login=False)
+                return render_template('index.html', user=user_list[0],login=False,current_url=current_url)
       else:
-        return render_template('Update.html', user=user_list[0])
+        return render_template('Update.html', user=user_list[0],current_url=current_url)
         
        
     else:
         # return "404 not valid card"
         # # No users found for the given email
-        return render_template('sign_up_form.html',user_id=user_id)
+        return render_template('sign_up_form.html',user_id=user_id,current_url=current_url)
     
     
 @app.route("/logout", methods=['GET', 'POST'])  
