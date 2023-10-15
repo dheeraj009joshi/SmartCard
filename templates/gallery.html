@@ -2032,18 +2032,69 @@
             height: 100%
         }
     </style>
-    <script>var p = document.createElement("P"); p.innerHTML = "&nbsp;", p.style.cssText = "position:fixed;visible:hidden;font-size:100px;zoom:1", document.body.appendChild(p); var rsz = function (e) { return function () { var r = Math.trunc(1e3 / parseFloat(window.getComputedStyle(e).getPropertyValue("font-size"))) / 10, t = document.body; r != t.style.getPropertyValue("--f") && t.style.setProperty("--f", r) } }(p); if ("ResizeObserver" in window) { var ro = new ResizeObserver(rsz); ro.observe(p) } else if ("requestAnimationFrame" in window) { var raf = function () { rsz(), requestAnimationFrame(raf) }; requestAnimationFrame(raf) } else setInterval(rsz, 100);</script>
-    <p style="position: fixed; font-size: 100px; zoom: 1;">&nbsp;</p>
 
-    <div data-block-group="0" class="v10 ps97 s116 c21 z92">
-        <div class="ps98">
-        </div>
-        <div class="ps97 v10 s117">
-            <div class="v11 ps99 s118 c22 z93">
-                <p class="p11"><a href="./" class="f44">BixID</a><a href="./" class="f45">ID</a></p>
+    
+    <script>var p = document.createElement("P"); p.innerHTML = "&nbsp;", p.style.cssText = "position:fixed;visible:hidden;font-size:100px;zoom:1", document.body.appendChild(p); var rsz = function (e) { return function () { var r = Math.trunc(1e3 / parseFloat(window.getComputedStyle(e).getPropertyValue("font-size"))) / 10, t = document.body; r != t.style.getPropertyValue("--f") && t.style.setProperty("--f", r) } }(p); if ("ResizeObserver" in window) { var ro = new ResizeObserver(rsz); ro.observe(p) } else if ("requestAnimationFrame" in window) { var raf = function () { rsz(), requestAnimationFrame(raf) }; requestAnimationFrame(raf) } else setInterval(rsz, 100);</script>
+  
+
+    <p style="position: fixed; font-size: 100px; zoom: 1">&nbsp;</p>
+    {% if "login" in session %}{% if session['login']==True %}
+    <div class="ps88 v10 s96 z78">
+      <div class="v11 ps87 s97">
+        <div class="v11 ps89 s98">
+          <a href="{{ url_for('update_user') }}">
+            <div id="edit-profile-btn" class="v12 ps89 s99 c23 z79 f38">
+              <p>Edit Profile</p>
             </div>
+          </a>
+          <div class="v11 ps90 s100 c22 z80">
+            <p class="p11"><a onclick="return pop&amp;&amp;pop.openPopup('popup4',event)" style="cursor:pointer;" href="#"
+                class="f39"><x-svg class="s101"><svg style="fill:currentColor" height="100%"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="graphics-object">
+                    <title>Mode Edit</title>
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z">
+                    </path>
+                  </svg></x-svg></a></p>
+          </div>
         </div>
+        <div class="v11 ps91 s102">
+          <a href="{{ url_for('logout') }}">
+            <div id="logout-btn" class="v12 ps89 s103 c23 z81 f38">
+              <p>Logout</p>
+            </div>
+            <div class="v11 ps90 s100 c22 z82">
+              <p class="p11"><a onclick="return pop&amp;&amp;pop.openPopup('popup4',event)" style="cursor:pointer;"
+                  href="#" class="f39"><x-svg class="s101"><svg style="fill:currentColor" height="100%"
+                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="graphics-object">
+                      <title>Logout</title>
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                      <path
+                        d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z">
+                      </path>
+                    </svg></x-svg></a></p>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
+    <div class="v8 ps63 s73 c12 z53">
+  
+    </div>
+  
+    {% else %}
+    <div data-block-group="0" class="v6 ps33 s39 c8 z22">
+      <div class="ps34"></div>
+      <div class="ps33 v6 s40">
+        <div class="v7 ps35 s41 c9 z23">
+  
+          <p class="p6 f19">Bix<span class="f20">ID</span></p>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endif %}
     <div data-block-group="0" class="c23">
         <div class="v10 ps100 s119 c24 z94">
             <div class="ps98">
@@ -2053,17 +2104,16 @@
                     <div class="v11 ps101 s122">
                         <div class="v11 ps101 s123 c22 z95">
                             <picture>
-                                <source srcset="images/_d447e34b-dfbb-4c7c-8217-8567e4ec7bd7-640.webp 2x"
-                                    type="image/webp">
-                                <source srcset="images/_d447e34b-dfbb-4c7c-8217-8567e4ec7bd7-640.jpeg 2x">
-                                <img src="images/_d447e34b-dfbb-4c7c-8217-8567e4ec7bd7-640.jpeg" class="i13">
+                               
+                                <source srcset="{{ session['user'].CoverImage }} 2x">
+                                <img src="{{ session['user'].CoverImage }}" class="i13">
                             </picture>
                         </div>
                         <div class="v11 ps102 s124 c22 z96">
                             <picture>
-                                <source srcset="images/img_20230303_210754-278.webp 2x" type="image/webp">
-                                <source srcset="images/img_20230303_210754-278.jpg 2x">
-                                <img src="images/img_20230303_210754-278.jpg" class="i14">
+                          
+                                <source srcset="{{ session['user'].ProfileImage }} 2x">
+                                <img src="{{ session['user'].ProfileImage }}" class="i14">
                             </picture>
                         </div>
                         <div class="v11 ps103 s125 c22 z97">
@@ -2090,7 +2140,7 @@
                     </div>
                 </div>
                 <div class="v11 ps105 s129 z99">
-                    <a href="bixid-template.html" style="display:block;">
+                    <a href="/{{ user['UserID'] }}" id='backButton' style="display:block;">
                         <div class="v11 ps101 s129 z94">
                             <div class="v11 ps101 s130 c22 z100">
                                 <p class="p11 f48"><x-svg class="s131"><svg style="fill:currentColor" height="100%"
@@ -2265,6 +2315,7 @@
                                 href="#" class="a3"></a>
                         </div>
                         <div class="v11 ps131 s159 c22 z124">
+                            <a href="whatsapp://send?text={{ current_url }}" target="_blank">
                             <p class="p11 f55"><x-svg class="s160"><svg style="fill:currentColor" height="100%"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" role="graphics-object">
                                         <title>What's App Square</title>
@@ -2272,8 +2323,10 @@
                                             d="M224 122.8c-72.7 0-131.8 59.1-131.9 131.8 0 24.9 7 49.2 20.2 70.1l3.1 5-13.3 48.6 49.9-13.1 4.8 2.9c20.2 12 43.4 18.4 67.1 18.4h.1c72.6 0 133.3-59.1 133.3-131.8 0-35.2-15.2-68.3-40.1-93.2-25-25-58-38.7-93.2-38.7zm77.5 188.4c-3.3 9.3-19.1 17.7-26.7 18.8-12.6 1.9-22.4.9-47.5-9.9-39.7-17.2-65.7-57.2-67.7-59.8-2-2.6-16.2-21.5-16.2-41s10.2-29.1 13.9-33.1c3.6-4 7.9-5 10.6-5 2.6 0 5.3 0 7.6.1 2.4.1 5.7-.9 8.9 6.8 3.3 7.9 11.2 27.4 12.2 29.4s1.7 4.3.3 6.9c-7.6 15.2-15.7 14.6-11.6 21.6 15.3 26.3 30.6 35.4 53.9 47.1 4 2 6.3 1.7 8.6-1 2.3-2.6 9.9-11.6 12.5-15.5 2.6-4 5.3-3.3 8.9-2 3.6 1.3 23.1 10.9 27.1 12.9s6.6 3 7.6 4.6c.9 1.9.9 9.9-2.4 19.1zM400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM223.9 413.2c-26.6 0-52.7-6.7-75.8-19.3L64 416l22.5-82.2c-13.9-24-21.2-51.3-21.2-79.3C65.4 167.1 136.5 96 223.9 96c42.4 0 82.2 16.5 112.2 46.5 29.9 30 47.9 69.8 47.9 112.2 0 87.4-72.7 158.5-160.1 158.5z">
                                         </path>
                                     </svg></x-svg></p>
+                            </a>
                         </div>
                         <div class="v11 ps132 s161 c22 z125">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ current_url }}" target="_blank">
                             <p class="p11 f56"><x-svg class="s162"><svg style="fill:currentColor" height="100%"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="graphics-object">
                                         <title>Facebook</title>
@@ -2281,8 +2334,11 @@
                                             d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
                                         </path>
                                     </svg></x-svg></p>
+                                </a>
                         </div>
                         <div class="v11 ps133 s161 c22 z126">
+                            <a href="https://www.linkedin.com/shareArticle?url={{ current_url }} "
+                target="_blank">
                             <p class="p11 f57"><x-svg class="s163"><svg style="fill:currentColor" height="100%"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" role="graphics-object">
                                         <title>LinkedIn</title>
@@ -2290,6 +2346,7 @@
                                             d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z">
                                         </path>
                                     </svg></x-svg></p>
+                            </a>
                         </div>
                         <div class="v11 ps134 s164 c22 z127">
                             <svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" class="i19">
@@ -2308,6 +2365,8 @@
                                     </svg></x-svg></p>
                         </div>
                         <div class="v11 ps136 s161 c22 z129">
+                            <a href="https://t.me/share/url?url={{ current_url }}&text=Check%20out%20this%20cool%20website%21"
+                            target="_blank">
                             <p class="p11 f57"><x-svg class="s163"><svg style="fill:currentColor" height="100%"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" role="graphics-object">
                                         <title>Telegram</title>
@@ -2315,8 +2374,11 @@
                                             d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z">
                                         </path>
                                     </svg></x-svg></p>
+                            </a>
                         </div>
                         <div class="v11 ps137 s161 c22 z130">
+                            <a href="https://pinterest.com/pin/create/button/?url={{ current_url }}&description=Check%20out%20this%20cool%20website"
+                            target="_blank">
                             <p class="p11 f59"><x-svg class="s162"><svg style="fill:currentColor" height="100%"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" role="graphics-object">
                                         <title>Pinterest</title>
@@ -2324,8 +2386,11 @@
                                             d="M496 256c0 137-111 248-248 248-25.6 0-50.2-3.9-73.4-11.1 10.1-16.5 25.2-43.5 30.8-65 3-11.6 15.4-59 15.4-59 8.1 15.4 31.7 28.5 56.8 28.5 74.8 0 128.7-68.8 128.7-154.3 0-81.9-66.9-143.2-152.9-143.2-107 0-163.9 71.8-163.9 150.1 0 36.4 19.4 81.7 50.3 96.1 4.7 2.2 7.2 1.2 8.3-3.3.8-3.4 5-20.3 6.9-28.1.6-2.5.3-4.7-1.7-7.1-10.1-12.5-18.3-35.3-18.3-56.6 0-54.7 41.4-107.6 112-107.6 60.9 0 103.6 41.5 103.6 100.9 0 67.1-33.9 113.6-78 113.6-24.3 0-42.6-20.1-36.7-44.8 7-29.5 20.5-61.3 20.5-82.6 0-19-10.2-34.9-31.4-34.9-24.9 0-44.9 25.7-44.9 60.2 0 22 7.4 36.8 7.4 36.8s-24.5 103.8-29 123.2c-5 21.4-3 51.6-.9 71.2C65.4 450.9 0 361.1 0 256 0 119 111 8 248 8s248 111 248 248z">
                                         </path>
                                     </svg></x-svg></p>
+                            </a>
                         </div>
                         <div class="v11 ps136 s167 c22 z131">
+                            <a href="mailto:?subject=Check%20out%20this%20cool%20website&body={{ current_url }}"
+                            target="_blank">
                             <p class="p11 f60"><x-svg class="s168"><svg style="fill:currentColor" height="100%"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="graphics-object">
                                         <title>Mail</title>
@@ -2334,12 +2399,13 @@
                                             d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z">
                                         </path>
                                     </svg></x-svg></p>
+                            </a>
                         </div>
                         <div class="v11 ps138 s169 c22 z132">
-                            <input type="text" value="url-here" placeholder="url-copy" name="text" class="input2">
+                            <input type="text" id="url-input"   value="{{ current_url }}" name="text" class="input2">
                         </div>
-                        <div class="v12 ps139 s170 c31 z133 f61">
-                            <p>Copy link</p>
+                        <div id='copy-button'  class="v12 ps139 s170 c31 z133 f61">
+                            <p id="copy-status">Copy link</p>
                         </div>
                     </div>
                 </div>
@@ -2357,9 +2423,9 @@
                 data-va="1" data-st="img" data-sm="1">
                 <div class="ggse v11 ps101 s174 c22 z110" style="min-height: 0px; min-width: 0px; overflow: hidden;">
                     <picture>
-                        <source srcset="images/bixid_-_metal_6-600.webp 2x" type="image/webp">
-                        <source srcset="images/bixid_-_metal_6-600.jpg 2x">
-                        <img src="images/bixid_-_metal_6-600.jpg" title="Bix Metal" class="i20">
+                     
+                        <source srcset=" {{ session['user'].Gallery.IMG1 }}  2x">
+                        <img src=" {{ session['user'].Gallery.IMG1 }} " title="Bix Metal" class="i20">
                     </picture>
                 </div>
                 <div class="ggso" onclick="lbox.openLightbox(this)">
@@ -2369,9 +2435,9 @@
                 data-va="1" data-st="img" data-sm="1">
                 <div class="ggse v11 ps101 s174 c22 z110" style="min-height: 0px; min-width: 0px; overflow: hidden;">
                     <picture>
-                        <source srcset="images/bixid_-_metal_7-600.webp 2x" type="image/webp">
-                        <source srcset="images/bixid_-_metal_7-600.jpg 2x">
-                        <img src="images/bixid_-_metal_7-600.jpg" class="i21">
+                  
+                        <source srcset=" {{ session['user'].Gallery.IMG2 }}  2x">
+                        <img src=" {{ session['user'].Gallery.IMG2 }} " class="i21">
                     </picture>
                 </div>
                 <div class="ggso" onclick="lbox.openLightbox(this)">
@@ -2381,9 +2447,9 @@
                 data-va="1" data-st="img" data-sm="1">
                 <div class="ggse v11 ps101 s174 c22 z110" style="min-height: 0px; min-width: 0px; overflow: hidden;">
                     <picture>
-                        <source srcset="images/bixid_-_metal-600.webp 2x" type="image/webp">
-                        <source srcset="images/bixid_-_metal-600.jpg 2x">
-                        <img src="images/bixid_-_metal-600.jpg" loading="lazy" class="i22">
+                       
+                        <source srcset=" {{ session['user'].Gallery.IMG3 }}  2x">
+                        <img src=" {{ session['user'].Gallery.IMG3 }} " loading="lazy" class="i22">
                     </picture>
                 </div>
                 <div class="ggso" onclick="lbox.openLightbox(this)">
@@ -2393,9 +2459,9 @@
                 data-va="1" data-st="img" data-sm="1">
                 <div class="ggse v11 ps101 s174 c22 z110" style="min-height: 0px; min-width: 0px; overflow: hidden;">
                     <picture>
-                        <source srcset="images/bixid_-_metal_9-600.webp 2x" type="image/webp">
-                        <source srcset="images/bixid_-_metal_9-600.jpg 2x">
-                        <img src="images/bixid_-_metal_9-600.jpg" loading="lazy" class="i23">
+                       
+                        <source srcset=" {{ session['user'].Gallery.IMG4 }}  2x">
+                        <img src=" {{ session['user'].Gallery.IMG4 }} " loading="lazy" class="i23">
                     </picture>
                 </div>
                 <div class="ggso" onclick="lbox.openLightbox(this)">
@@ -2405,9 +2471,9 @@
                 data-va="1" data-st="img" data-sm="1">
                 <div class="ggse v11 ps101 s174 c22 z110" style="min-height: 0px; min-width: 0px; overflow: hidden;">
                     <picture>
-                        <source srcset="images/bixid_-_metal_8-600.webp 2x" type="image/webp">
-                        <source srcset="images/bixid_-_metal_8-600.jpg 2x">
-                        <img src="images/bixid_-_metal_8-600.jpg" loading="lazy" class="i24">
+                      
+                        <source srcset=" {{ session['user'].Gallery.IMG5 }}  2x">
+                        <img src=" {{ session['user'].Gallery.IMG5 }} " loading="lazy" class="i24">
                     </picture>
                 </div>
                 <div class="ggso" onclick="lbox.openLightbox(this)">
@@ -2417,6 +2483,30 @@
     </div>
     <div class="btf c5">
     </div>
+
+   
+    <script>
+        document.getElementById("copy-button").addEventListener("click", function () {
+          // Get the URL from the input element
+          var urlInput = document.getElementById("url-input");
+          var urlToCopy = urlInput.value;
+    
+          // Use the Clipboard API to copy the URL to the clipboard
+          navigator.clipboard.writeText(urlToCopy).then(function () {
+              // Update the text of the "copy-status" element
+              document.getElementById("copy-status").textContent = "Copied!";
+    
+              // Hide the message after 2 seconds
+              setTimeout(function () {
+                  document.getElementById("copy-status").textContent = "";
+                  document.getElementById("copy-button").textContent = "Copy Link";
+              }, 2000);
+          }).catch(function (err) {
+              // Handle errors, if any
+              console.error('Failed to copy text: ', err);
+          });
+      });
+      </script>
     <script>!function () { if ("Promise" in window && void 0 !== window.performance) { var e, t, r = document, n = function () { return r.createElement("link") }, o = new Set, a = n(), i = a.relList && a.relList.supports && a.relList.supports("prefetch"), s = location.href.replace(/#[^#]+$/, ""); o.add(s); var c = function (e) { var t = location, r = "http:", n = "https:"; if (e && e.href && e.origin == t.origin && [r, n].includes(e.protocol) && (e.protocol != r || t.protocol != n)) { var o = e.pathname; if (!(e.hash && o + e.search == t.pathname + t.search || "?preload=no" == e.search.substr(-11) || ".html" != o.substr(-5) && ".html" != o.substr(-5) && "/" != o.substr(-1))) return !0 } }, u = function (e) { var t = e.replace(/#[^#]+$/, ""); if (!o.has(t)) { if (i) { var a = n(); a.rel = "prefetch", a.href = t, r.head.appendChild(a) } else { var s = new XMLHttpRequest; s.open("GET", t, s.withCredentials = !0), s.send() } o.add(t) } }, p = function (e) { return e.target.closest("a") }, f = function (t) { var r = t.relatedTarget; r && p(t) == r.closest("a") || e && (clearTimeout(e), e = void 0) }, d = { capture: !0, passive: !0 }; r.addEventListener("touchstart", function (e) { t = performance.now(); var r = p(e); c(r) && u(r.href) }, d), r.addEventListener("mouseover", function (r) { if (!(performance.now() - t < 1200)) { var n = p(r); c(n) && (n.addEventListener("mouseout", f, { passive: !0 }), e = setTimeout(function () { u(n.href), e = void 0 }, 80)) } }, d) } }(); dpth = "/"; !function () { var e = {}, t = {}, n = {}; window.ld = function (a, r, o) { var c = function () { "interactive" == document.readyState ? (r && r(), document.addEventListener("readystatechange", function () { "complete" == document.readyState && o && o() })) : "complete" == document.readyState ? (r && r(), o && o()) : document.addEventListener("readystatechange", function () { "interactive" == document.readyState && r && r(), "complete" == document.readyState && o && o() }) }, d = (1 << a.length) - 1, u = 0, i = function (r) { var o = a[r], i = function () { for (var t = 0; t < a.length; t++) { var r = (1 << t) - 1; if ((u & r) == r && n[a[t]]) { if (!e[a[t]]) { var o = document.createElement("script"); o.textContent = n[a[t]], document.body.appendChild(o), e[a[t]] = !0 } if ((u |= 1 << t) == d) return c(), 0 } } return 1 }; if (null == t[o]) { t[o] = []; var f = new XMLHttpRequest; f.open("GET", o, !0), f.onload = function () { n[o] = f.responseText, [].forEach.call(t[o], function (e) { e() }) }, t[o].push(i), f.send() } else { if (e[o]) return i(); t[o].push(i) } return 1 }; if (a.length) for (var f = 0; f < a.length && i(f); f++); else c() } }(); ld([], function () { !function () { var e = document.querySelectorAll('a[href^="#"]');[].forEach.call(e, function (e) { e.addEventListener("click", function (t) { var a = 0; if (e.hash.length > 1) { var n = parseFloat(getComputedStyle(document.body).getPropertyValue("zoom")); n || (n = 1); var o = e.hash.slice(1), r = document.getElementById(o); if (null === r && null === (r = document.querySelector('[name="' + o + '"]'))) return; var s = /chrome/i.test(navigator.userAgent); a = s ? r.getBoundingClientRect().top * n + pageYOffset : (r.getBoundingClientRect().top + pageYOffset) * n } if ("scrollBehavior" in document.documentElement.style) scroll({ top: a, left: 0, behavior: "smooth" }); else if ("requestAnimationFrame" in window) { var u = pageYOffset, i = null; requestAnimationFrame(function e(t) { i || (i = t); var n = (t - i) / 400; scrollTo(0, u < a ? (a - u) * n + u : u - (u - a) * n), n < 1 ? requestAnimationFrame(e) : scrollTo(0, a) }) } else scrollTo(0, a); t.preventDefault() }, !1) }) }(), window.smoothScroll = function (e, t, a, n) { e.stopImmediatePropagation(); var o = (t = document.querySelector(t)).getBoundingClientRect().top, r = parseFloat(getComputedStyle(document.body).getPropertyValue("zoom")); r || (r = 1); var s = /chrome/i.test(navigator.userAgent), u = window.pageYOffset, i = o * r + (s ? 0 : u * (r - 1)), c = null; function l() { m(window.performance.now ? window.performance.now() : Date.now()) } function m(e) { null === c && (c = e); var t = (e - c) / 1e3, o = function (e, t, a) { switch (n) { case "linear": break; case "easeInQuad": e *= e; break; case "easeOutQuad": e = 1 - (1 - e) * (1 - e); break; case "easeInCubic": e *= e * e; break; case "easeOutCubic": e = 1 - Math.pow(1 - e, 3); break; case "easeInOutCubic": e = e < .5 ? 4 * e * e * e : 1 - Math.pow(-2 * e + 2, 3) / 2; break; case "easeInQuart": e *= e * e * e; break; case "easeOutQuart": e = 1 - Math.pow(1 - e, 4); break; case "easeInOutQuart": e = e < .5 ? 8 * e * e * e * e : 1 - Math.pow(-2 * e + 2, 4) / 2; break; case "easeInQuint": e *= e * e * e * e; break; case "easeOutQuint": e = 1 - Math.pow(1 - e, 5); break; case "easeInOutQuint": e = e < .5 ? 16 * e * e * e * e * e : 1 - Math.pow(-2 * e + 2, 5) / 2; break; case "easeInCirc": e = 1 - Math.sqrt(1 - Math.pow(e, 2)); break; case "easeOutCirc": e = Math.sqrt(1 - Math.pow(0, 2)); break; case "easeInOutCirc": e = e < .5 ? (1 - Math.sqrt(1 - Math.pow(2 * e, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * e + 2, 2)) + 1) / 2; break; case "easeInOutQuad": default: e = e < .5 ? 2 * e * e : 1 - Math.pow(-2 * e + 2, 2) / 2 }e > 1 && (e = 1); return t + a * e }(t / a, u, i); window.scrollTo(0, o), t < a && ("requestAnimationFrame" in window ? requestAnimationFrame(m) : setTimeout(l, 1e3 / 120)) } return "requestAnimationFrame" in window ? requestAnimationFrame(m) : setTimeout(l, 1e3 / 120), !1 }; if (location.hash) { var e = location.hash.replace("#", ""), o = function () { var t = document.querySelectorAll('[name="' + e + '"]')[0]; t && t.scrollIntoView(), "0px" === window.getComputedStyle(document.body).getPropertyValue("min-width") && setTimeout(o, 100) }; o() } }); ld(["js/popup.6847ae.js"]); ld(["js/lightbox.6847ae.js"]);</script>
 
     <script>var pop = { isIOS: /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream || "MacIntel" === navigator.platform && navigator.maxTouchPoints > 1, isChrome: /chrome/i.test(navigator.userAgent), isFF: /firefox/i.test(navigator.userAgent), addEvent: function (t, e, n) { return null != t.addEventListener ? t.addEventListener(e, n, !1) : null != t.attachEvent ? t.attachEvent("on" + e, n) : t[e] = n }, removeEvent: function (t, e, n) { return null != t.removeEventListener ? t.removeEventListener(e, n) : null != t.detachEvent ? t.detachEvent("on" + e, n) : t[e] = null }, addPopupAnimationEndEvent: function (t, e) { var n = function (t, e) { return function () { e(t) } }(t, e); this.addEvent(t, "animationend", n), this.addEvent(t, "oanimationend", n), this.addEvent(t, "webkitAnimationEnd", n), this.addEvent(t, "MSAnimationEnd", n), t.fn = n }, removePopupAnimationEndEvent: function (t) { this.removeEvent(t, "animationend", t.fn), this.removeEvent(t, "oanimationend", t.fn), this.removeEvent(t, "webkitAnimationEnd", t.fn), this.removeEvent(t, "MSAnimationEnd", t.fn), t.fn = null }, prop: function (t, e, n) { var i = void 0; "Transform" === e && (i = t.getAttribute("data-popup-transform")) && (n.length && (n += " "), n += i); for (var o = "Webkit Moz O ms Khtml".split(" "), s = 0; s < o.length; s++)if (void 0 !== t.style[o[s] + e]) return void (t.style[o[s] + e] = n); void 0 === t.style[e.toLowerCase()] || (t.style[e.toLowerCase()] = n) }, animationSupport: function () { if (null != this.animations) return this.animations; var t = document.createElement("div"); if (void 0 !== t.style.animationName) return this.animations = !0; for (var e = "Webkit Moz O ms Khtml".split(" "), n = 0; n < e.length; n++)if (void 0 !== t.style[e[n] + "AnimationName"]) return this.animations = !0; return this.animations = !1 }, popupFadeIn: function (t) { t.style.opacity = 1, this.removeClass(t, "fadeIn"), t.offsetWidth, this.removePopupAnimationEndEvent(t) }, popupFadeOut: function (t) { t.style.visibility = "hidden", this.prop(t, "Transform", "translate3d(-999999px,0,0)"), t.style.opacity = 0, this.removeClass(t, "fadeOut"), t.offsetWidth, this.removePopupAnimationEndEvent(t) }, closeGroup: function (t) { if (0 == t.hasAttribute("data-popup-group")) return !0; for (var e = t.getAttribute("data-popup-group"), n = document.getElementsByClassName("popup"), i = n.length - 1; i >= 0; i--)for (var o = n[i]; o != t && o != document;) { if (o.getAttribute("data-popup-group") === e) { if (!1 !== this.isOpen(o)) this.closePopup(o.id); else if (o.hasAttribute("data-popup-open")) return !1; break } o = o.parentNode } return !0 }, show: function (t) { var e = document.getElementById(t); this.prop(e, "Transform", "") }, openPopup: function (t, e) { void 0 !== e && e.stopImmediatePropagation(); var n = document.getElementById(t); if (null === n || !this.closeGroup(n)) return !1; var i = this.canOpen(n); if (!1 === i) return !1; if (null != i) wl.doAnimate(i); else { if (!this.hasClass(n, "animm")) { var o = n.querySelector(".animm"); null != o && (o.style.visibility = "visible") } n.style.visibility = "visible", n.style.opacity = 1 } var s = n.querySelector(".popup"), a = (null != s ? s : n).children[0]; void 0 !== a && "scroll" === window.getComputedStyle(a).getPropertyValue("overflow") && (a.style.overflow = "hidden", a.offsetWidth, a.style.overflow = ""), n.setAttribute("data-popup-open", !0); var r = n.getAttribute("data-popup-type"); if (r > 0) { if (null != i) { var u = n.getAttribute("data-anim"); null !== u && u.length ? u = u.split(";") : (u = [i.style.animationDuration, i.style.animationDelay], n.setAttribute("data-anim", u.join(";"))), n.style.animationDuration = n.style["-webkit-animation-duration"] = n.style["-moz-animation-duration"] = u[0], n.style.animationDelay = n.style["-webkit-animation-delay"] = n.style["-moz-animation-delay"] = u[1], this.removeClass(n, "fadeOut"), this.addClass(n, "fadeIn"), n.style.visibility = "visible", this.addPopupAnimationEndEvent(n, this.popupFadeIn.bind(this)) } if (1 == r) { var l = document.body, p = document.documentElement.clientWidth - window.innerWidth, d = window.getComputedStyle(l).getPropertyValue("min-width"); "0px" !== d && (d = parseInt(d) * this.z()) > document.documentElement.clientWidth && (p += parseInt(d) - document.documentElement.clientWidth) > 0 && (p = 0), l.style.setProperty("--sw", parseInt(p) + "px"), n.escapePressed = function (t) { return function (e) { var n; pop.isOpen(t) && (n = t.getAttribute("onclick")) && n.length > 0 && 27 == e.keyCode && t.escapePressed && (pop.closePopup(t.id), pop.removeEvent(document, "keyup", t.escapePressed), t.escapePressed = void 0) } }(n), this.addEvent(document, "keyup", n.escapePressed), this.updateAlign(), this.addClass(l, "modal"), n.addEventListener && n.addEventListener("touchstart", this.preventscroll = function (t) { return function (e) { if (e.target == t) { var n = t.getAttribute("onclick"); n && n.length > 0 && pop.closePopup(t.id) } } }(n)) } } if (this.prop(n, "Transform", ""), null != this.hook && null != this.hook[t]) for (var m = this.hook[t], h = m.length, c = 0; c < h; c++)null != m[c].open && m[c].open(); var v = document.createEvent("Event"); return v.initEvent("scroll", !0, !0), window.dispatchEvent(v), !1 }, isOpen: function (t) { var e; return !(!t.hasAttribute("data-popup-open") || t.fn || this.hasClass(t, "animated") || null != (e = t.querySelector(".animm")) && this.hasClass(e, "animated")) && e }, canOpen: function (t) { var e = void 0; return this.animationSupport() && (e = this.hasClass(t, "animm") ? t : t.querySelector(".animm")), !(t.hasAttribute("data-popup-open") || null != t.fn || this.hasClass(t, "animated") || null != e && this.hasClass(e, "animated")) && e }, openClosePopup: function (t, e) { var n = document.getElementById(t); return !1 === this.isOpen(n) ? this.openPopup(t, e) : this.closePopup(t, e), !1 }, closePopup: function (t, e) { void 0 !== e && e.stopImmediatePropagation(); var n = document.getElementById(t), i = this.isOpen(n); if (!1 === i) return !1; var o = n.getAttribute("data-popup-type"); if (n.removeAttribute("data-popup-open"), this.animationSupport() && (i = this.hasClass(n, "animm") ? n : n.querySelector(".animm")), null != i && wl.doAnimate(i, 1), n != i) if (null != i && 0 != o) { var s = n.getAttribute("data-anim").split(";"); n.style.animationDuration = n.style["-webkit-animation-duration"] = n.style["-moz-animation-duration"] = s[0], n.style.animationDelay = n.style["-webkit-animation-delay"] = n.style["-moz-animation-delay"] = s[1], this.removeClass(n, "fadeIn"), this.addClass(n, "fadeOut"), this.addPopupAnimationEndEvent(n, this.popupFadeOut.bind(this)) } else n.style.visibility = "hidden", this.prop(n, "Transform", "translate3d(-999999px,0,0)"), n.style.opacity = 0; this.updateAlign(!0); var a = document.body; if (this.removeClass(a, "modal"), a.style.setProperty("--sw", "0px"), n.removeEventListener && n.removeEventListener("touchstart", this.preventScroll), null != this.hook && null != this.hook[t]) for (var r = this.hook[t], u = r.length, l = 0; l < u; l++)null != r[l].close && r[l].close(); return !1 }, overPopup: function (t, e) { var n = document.getElementById(e); !1 === this.isOpen(n) ? this.openPopup(e) : t.oo && (clearTimeout(t.oo), t.oo = void 0) }, overoutPopup: function (t, e) { var n = function (t, e) { return function () { var i, o = null != e ? document.getElementById(e) : void 0; !t.oo || null != o && !1 !== pop.isOpen(o) && pop.isOver((i = o.querySelector(".popup")) ? i : o) ? t.oo = setTimeout(n, t.oo ? 100 : 1) : (t.oo = void 0, null != e && (!1 !== pop.isOpen(o) ? pop.closePopup(e) : o.hasAttribute("data-popup-open") && (t.oo = setTimeout(n, 100)))) } }(t, e); t.oo && (clearTimeout(t.oo), t.oo = void 0), n() }, mouseMove: function (t) { this.mouseX = t.clientX, this.mouseY = t.clientY }, touchStart: function (t, e, n) { t.touches.length && (this.mouseX = t.touches[0].clientX, this.mouseY = t.touches[0].clientY), this.overPopup(e, n) }, touchMove: function (t) { t.touches.length && (this.mouseX = t.touches[0].clientX, this.mouseY = t.touches[0].clientY) }, touchEnd: function (t, e, n) { t.touches.length && (this.mouseX = t.touches[0].clientX, this.mouseY = t.touches[0].clientY) }, isOver: function (t) { var e = t.getBoundingClientRect(); if (!this.isFF) { var n = this.z(); e = { left: e.left * n, right: e.right * n, top: e.top * n, bottom: e.bottom * n }, this.isChrome || (e.top += window.scrollY * (n - 1), e.bottom += window.scrollY * (n - 1)) } return this.mouseX >= parseInt(e.left) && this.mouseX <= parseInt(e.right) && this.mouseY >= parseInt(e.top) && this.mouseY <= parseInt(e.bottom) }, hasClass: function (t, e) { var n = t.classList; return null != n ? n.contains(e) : (" " + t.className + " ").indexOf(" " + e + " ") > -1 }, addClass: function (t, e) { var n = t.classList; null != n ? n.add(e) : t.className += " " + e }, removeClass: function (t, e) { if (null != (n = t.classList)) n.remove(e); else { var n, i = (n = t.className.split(" ")).indexOf(e); i >= 0 && (n.splice(i, 1), t.className = n.join(" ")) } }, addHook: function (t, e, n) { null == this.hook && (this.hook = {}), null == this.hook[t] && (this.hook[t] = []), this.hook[t].push({ open: e, close: n }) }, z: function () { var t = parseFloat(window.getComputedStyle(document.body).getPropertyValue("zoom")); return t || 1 }, updateAlign: function (t) { if (this.isIOS) { var e = this.z(), n = document.body.style, i = n.cssText, o = i.indexOf("margin-top"), s = i.indexOf("position"); if (o >= 0 && s >= 0 && (s = i.indexOf(";", s + 8)) >= 0) { var a = -parseInt(n.marginTop) * e; i = i.substring(0, o) + i.substring(s + 1), n.cssText = i, window.scrollTo(0, a) } t || (i += "margin-top:-" + (window.scrollY / e).toFixed(3) + "px;width:calc(100% - var(--sw));position:fixed;", n.cssText += i) } }, init: function () { var t = function () { var t = pop.z(), e = .01 * window.innerHeight / t; if (pop.vh !== e) { var n = document.body; pop.vh = e, n.style.setProperty("--vh", e + "px"), pop.hasClass(n, "modal") && pop.updateAlign() } }; if ("requestAnimationFrame" in window) { var e = function () { t(), requestAnimationFrame(e) }; requestAnimationFrame(e) } else this.addEvent(window, "resize", t), t(); this.addEvent(window, "mousemove", this.mouseMove.bind(this)), this.addEvent(window, "touchmove", this.touchMove.bind(this)) } }; pop.init();

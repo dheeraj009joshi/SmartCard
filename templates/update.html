@@ -224,6 +224,71 @@
                   <!-- Additional payment fields can go here -->
               </div>
           </div>
+
+          <div class="section-heading">Gallery</div>
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- image 1  -->
+                    <div class="form-group">
+                        <label class="form-label  " for="ProfileImage">Gallery Image 1:</label>
+                        <input type="hidden" class="form-control" id="Email" name="DefaultGalleryImg1" value='{{ user.Gallery.IMG1 }}' required >
+                        <input type="file" class="form-control" id="GalleryImg1" name="GalleryImg1" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label id="GalleryImg1Label">In Use:</label>
+                        <img id="GalleryImg1Image" src="" alt="Preview" style="max-width: 100px; max-height: 100px;">
+                    </div>
+
+                    <!-- image 2  -->
+                    <div class="form-group">
+                        <label class="form-label  " for="ProfileImage">Gallery Image 2:</label>
+                        <input type="hidden" class="form-control" id="Email" name="DefaultGalleryImg2" value='{{ user.Gallery.IMG2 }}' required >
+                        <input type="file" class="form-control" id="GalleryImg2" name="GalleryImg2" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label id="GalleryImg2Label">In Use:</label>
+                        <img id="GalleryImg2Image" src="" alt="Preview" style="max-width: 100px; max-height: 100px;">
+                    </div>
+
+
+
+                    <!-- image 3  -->
+                    <div class="form-group">
+                        <label class="form-label  " for="ProfileImage">Gallery Image 3:</label>
+                        <input type="hidden" class="form-control" id="Email" name="DefaultGalleryImg3" value='{{ user.Gallery.IMG3 }}' required >
+                        <input type="file" class="form-control" id="GalleryImg3" name="GalleryImg3" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label id="GalleryImg3Label">In Use:</label>
+                        <img id="GalleryImg3Image" src="" alt="Preview" style="max-width: 100px; max-height: 100px;">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- image 4  -->
+                    <div class="form-group">
+                        <label class="form-label  " for="ProfileImage">Gallery Image 4:</label>
+                        <input type="hidden" class="form-control" id="Email" name="DefaultGalleryImg4" value='{{ user.Gallery.IMG4 }}' required >
+                        <input type="file" class="form-control" id="GalleryImg4" name="GalleryImg4" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label id="GalleryImg4Label">In Use:</label>
+                        <img id="GalleryImg4Image" src="" alt="Preview" style="max-width: 100px; max-height: 100px;">
+                    </div>
+
+                    <!-- image 5  -->
+                    <div class="form-group">
+                        <label class="form-label  " for="ProfileImage">Gallery Image 5:</label>
+                        <input type="hidden" class="form-control" id="Email" name="DefaultGalleryImg5" value='{{ user.Gallery.IMG5 }}' required >
+                        <input type="file" class="form-control" id="GalleryImg5" name="GalleryImg5" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label id="GalleryImg5Label">In Use:</label>
+                        <img id="GalleryImg5Image" src="" alt="Preview" style="max-width: 100px; max-height: 100px;">
+                    </div>
+
+                </div>
+            </div>
+
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
@@ -252,6 +317,66 @@
             reader.readAsDataURL(input.files[0]);
         }
     });
+
+
+    $('#GalleryImg1').change(function () {
+        var input = this;
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#GalleryImg1Image').attr('src', e.target.result);
+                $('#GalleryImg1Label').text('Preview'); // Change the text to 'Preview'
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    });
+    $('#GalleryImg2').change(function () {
+        var input = this;
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#GalleryImg2Image').attr('src', e.target.result);
+                $('#GalleryImg2Label').text('Preview'); // Change the text to 'Preview'
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    });
+    $('#GalleryImg3').change(function () {
+        var input = this;
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#GalleryImg3Image').attr('src', e.target.result);
+                $('#GalleryImg3Label').text('Preview'); // Change the text to 'Preview'
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    });
+    $('#GalleryImg4').change(function () {
+        var input = this;
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#GalleryImg4Image').attr('src', e.target.result);
+                $('#GalleryImg4Label').text('Preview'); // Change the text to 'Preview'
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    });
+
+    $('#GalleryImg5').change(function () {
+        var input = this;
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#GalleryImg5Image').attr('src', e.target.result);
+                $('#GalleryImg5Label').text('Preview'); // Change the text to 'Preview'
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    });
+
+
 });</script>
     <!-- Bootstrap JS and dependencies (optional) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

@@ -91,13 +91,25 @@ def update_user():
         print(request.referrer)
         profile_image = request.files['ProfileImage']
         cover_image = request.files['CoverImage']
+        gallery_1=request.files['GalleryImg1']
+        gallery_2=request.files['GalleryImg2']
+        gallery_3=request.files['GalleryImg3']
+        gallery_4=request.files['GalleryImg4']
+        gallery_5=request.files['GalleryImg5']
         try:
             # Save the uploaded files to a desired location
-            profile_image.save(f'static/{profile_image.filename}')
-            cover_image.save(f'static/{cover_image.filename}')
+            profile_image.save(f'static/profile_cover_photos/{profile_image.filename}')
+            cover_image.save(f'static/profile_cover_photos/{cover_image.filename}')
         except:
             pass
-        
+        try:
+            gallery_1.save(f'static/gallery_photos/{gallery_1.filename}')
+            gallery_2.save(f'static/gallery_photos/{gallery_2.filename}')
+            gallery_3.save(f'static/gallery_photos/{gallery_3.filename}')
+            gallery_4.save(f'static/gallery_photos/{gallery_4.filename}')
+            gallery_5.save(f'static/gallery_photos/{gallery_5.filename}')
+        except:
+            pass
         uid=request.form.get('UserID')
         print(uid)
         print('this is post request')
@@ -105,8 +117,8 @@ def update_user():
             "UserID":uid,
             "FirstName":request.form.get("FName"),
             "LastName": request.form.get("LName"),
-            "ProfileImage":f"static/{profile_image.filename}",
-            "CoverImage":f"static/{cover_image.filename}",
+            "ProfileImage":f"static/profile_cover_photos/{profile_image.filename}",
+            "CoverImage":f"static/profile_cover_photos/{cover_image.filename}",
             "Contact": request.form.get("Contact"),
             "DOB":request.form.get("DOB"),
             "BusinessName": request.form.get("BusinessName"),
@@ -135,12 +147,12 @@ def update_user():
               
             },
 
-            "Gallery": {
-                "IMG1":"",
-                "IMG2":"",
-                "IMG3":"",
-                "IMG4":"",
-                "IMG5":"",
+              "Gallery": {
+                "IMG1":f"static/gallery_photos/{gallery_1.filename}",
+                "IMG2":f"static/gallery_photos/{gallery_2.filename}",
+                "IMG3":f"static/gallery_photos/{gallery_3.filename}",
+                "IMG4":f"static/gallery_photos/{gallery_4.filename}",
+                "IMG5":f"static/gallery_photos/{gallery_5.filename}",
             },
             "Payment": {
                 # "QRImage":"QRImage.jpg",
@@ -163,10 +175,20 @@ def update_user():
                 "Status_of_data": True,
             }
         }
-        if userRecord['ProfileImage']=='static/':
+        if userRecord['ProfileImage']=='static/profile_cover_photos/':
             userRecord['ProfileImage']=request.form.get("UserProfileDefault")
-        if userRecord['CoverImage']=='static/':
+        if userRecord['CoverImage']=='static/profile_cover_photos/':
             userRecord['CoverImage']=request.form.get("UserCoverDefault")
+        if userRecord['Gallery']['IMG1']=='static/gallery_photos/':
+            userRecord['Gallery']['IMG1']=request.form.get("DefaultGalleryImg1")
+        if userRecord['Gallery']['IMG2']=='static/gallery_photos/':
+            userRecord['Gallery']['IMG2']=request.form.get("DefaultGalleryImg2")
+        if userRecord['Gallery']['IMG3']=='static/gallery_photos/':
+            userRecord['Gallery']['IMG3']=request.form.get("DefaultGalleryImg3")
+        if userRecord['Gallery']['IMG4']=='static/gallery_photos/':
+            userRecord['Gallery']['IMG4']=request.form.get("DefaultGalleryImg4")
+        if userRecord['Gallery']['IMG5']=='static/gallery_photos/':
+            userRecord['Gallery']['IMG5']=request.form.get("DefaultGalleryImg5")
        
         update_operation = {
         "$set": userRecord
@@ -205,21 +227,33 @@ def register():
         print(request.referrer)
         profile_image = request.files['ProfileImage']
         cover_image = request.files['CoverImage']
+        gallery_1=request.files['GalleryImg1']
+        gallery_2=request.files['GalleryImg2']
+        gallery_3=request.files['GalleryImg3']
+        gallery_4=request.files['GalleryImg4']
+        gallery_5=request.files['GalleryImg5']
         try:
             # Save the uploaded files to a desired location
-            profile_image.save(f'static/{profile_image.filename}')
-            cover_image.save(f'static/{cover_image.filename}')
+            profile_image.save(f'static/profile_cover_photos/{profile_image.filename}')
+            cover_image.save(f'static/profile_cover_photos/{cover_image.filename}')
         except:
             pass
-        
+        try:
+            gallery_1.save(f'static/gallery_photos/{gallery_1.filename}')
+            gallery_2.save(f'static/gallery_photos/{gallery_2.filename}')
+            gallery_3.save(f'static/gallery_photos/{gallery_3.filename}')
+            gallery_4.save(f'static/gallery_photos/{gallery_4.filename}')
+            gallery_5.save(f'static/gallery_photos/ {gallery_5.filename}')
+        except:
+            pass
         uid=request.referrer.split("/")[-1]
         print('this is post request')
         userRecord={
             "UserID":uid,
             "FirstName":request.form.get("FName"),
             "LastName": request.form.get("LName"),
-            "ProfileImage":f"static/{profile_image.filename}",
-            "CoverImage":f"static/{cover_image.filename}",
+            "ProfileImage":f"static/profile_cover_photos/{profile_image.filename}",
+            "CoverImage":f"static/profile_cover_photos/{cover_image.filename}",
             "Contact": request.form.get("Contact"),
             "DOB":request.form.get("DOB"),
             "BusinessName": request.form.get("BusinessName"),
@@ -250,11 +284,11 @@ def register():
             },
 
             "Gallery": {
-                "IMG1":"",
-                "IMG2":"",
-                "IMG3":"",
-                "IMG4":"",
-                "IMG5":"",
+                "IMG1":f"static/gallery_photos/{gallery_1.filename}",
+                "IMG2":f"static/gallery_photos/{gallery_2.filename}",
+                "IMG3":f"static/gallery_photos/{gallery_3.filename}",
+                "IMG4":f"static/gallery_photos/{gallery_4.filename}",
+                "IMG5":f"static/gallery_photos/{gallery_5.filename}",
             },
              "Payment": {
                 # "QRImage":"QRImage.jpg",
@@ -288,6 +322,24 @@ def register():
     
     else:
         return "non post"
+    
+@app.route("/gallery", methods=['GET', 'POST'])  
+def gallery(): 
+    uid=request.referrer.split("/")[-1]
+    urlsss=request.url.split("/")
+    urlsss[-1]=uid
+    current_url ='/'.join(urlsss)
+    from all_users import users
+    print(request.referrer)
+    user_list  =[]
+    for i in users:
+        if i["UserID"]==uid:
+            user_list.append(i)
+    # users = collection.users.find({"UserID": uid})
+    user=user_list[0] 
+    return render_template("gallery.html",user=user,current_url=current_url)
+    
+
   
 port = int(os.environ.get('PORT', 5000))
 app.run(debug=True, host='0.0.0.0',port=port)

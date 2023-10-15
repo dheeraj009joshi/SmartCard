@@ -8756,16 +8756,18 @@
               <p class="p6 f27">Location</p>
             </div>
             <div class="v7 ps54 s59 c9 z43">
-              <p class="p8 f26">
-                <x-svg class="s60"><svg style="fill: currentColor" height="100%" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24" role="graphics-object">
-                    <title>Photo</title>
-                    <path d="M0 0h24v24H0z" fill="none"></path>
-                    <path
-                      d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z">
-                    </path>
-                  </svg></x-svg>
-              </p>
+              <a href="{{url_for('gallery')}}">
+                <p class="p8 f26">
+                  <x-svg class="s60"><svg style="fill: currentColor" height="100%" xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24" role="graphics-object">
+                      <title>Photo</title>
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                      <path
+                        d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z">
+                      </path>
+                    </svg></x-svg>
+                </p>
+              </a>
             </div>
             <div class="v7 ps55 s65 c9 z44">
               <p class="p8">
@@ -8784,16 +8786,18 @@
               </p>
             </div>
             <div class="v7 ps56 s66 c9 z45">
-              <p class="p8 f26">
-                <x-svg class="s60"><svg style="fill: currentColor" height="100%" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24" role="graphics-object">
-                    <title>Settings Phone</title>
-                    <path d="M0 0h24v24H0V0z" fill="none"></path>
-                    <path
-                      d="M11 9h2v2h-2zm4 0h2v2h-2zm5 6.5c-1.25 0-2.45-.2-3.57-.57-.1-.03-.21-.05-.31-.05-.26 0-.51.1-.71.29l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM5.03 5h1.5c.07.88.22 1.75.46 2.59L5.79 8.8c-.41-1.21-.67-2.48-.76-3.8zM19 18.97c-1.32-.09-2.6-.35-3.8-.76l1.2-1.2c.85.24 1.72.39 2.6.45v1.51zM19 9h2v2h-2z">
-                    </path>
-                  </svg></x-svg>
-              </p>
+              <a href="tel:{{ session['user'].Contact }}" target="_blank">
+                <p class="p8 f26">
+                  <x-svg class="s60"><svg style="fill: currentColor" height="100%" xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24" role="graphics-object">
+                      <title>Settings Phone</title>
+                      <path d="M0 0h24v24H0V0z" fill="none"></path>
+                      <path
+                        d="M11 9h2v2h-2zm4 0h2v2h-2zm5 6.5c-1.25 0-2.45-.2-3.57-.57-.1-.03-.21-.05-.31-.05-.26 0-.51.1-.71.29l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM5.03 5h1.5c.07.88.22 1.75.46 2.59L5.79 8.8c-.41-1.21-.67-2.48-.76-3.8zM19 18.97c-1.32-.09-2.6-.35-3.8-.76l1.2-1.2c.85.24 1.72.39 2.6.45v1.51zM19 9h2v2h-2z">
+                      </path>
+                    </svg></x-svg>
+                </p>
+              </a>
             </div>
             <div class="v7 ps57 s67 c9 z46">
               <a href="{{ session['user'].Website }}" target="_blank">
@@ -9028,8 +9032,7 @@
               </a>
             </div>
             <div class="v19 ps250 s302 c45 z238">
-              <a href="https://www.linkedin.com/shareArticle?url={{ current_url }}"
-                target="_blank">
+              <a href="https://www.linkedin.com/shareArticle?url={{ current_url }} " target="_blank">
                 <p class="p19 f100"><x-svg class="s304"><svg style="fill:currentColor" height="100%"
                       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" role="graphics-object">
                       <title>LinkedIn</title>
@@ -9080,8 +9083,7 @@
               </a>
             </div>
             <div class="v19 ps208 s308 c45 z243">
-              <a href="mailto:?subject=Check%20out%20this%20cool%20website&body={{ current_url }}"
-                target="_blank">
+              <a href="mailto:?subject=Check%20out%20this%20cool%20website&body={{ current_url }}" target="_blank">
                 <p class="p19 f103"><x-svg class="s309"><svg style="fill:currentColor" height="100%"
                       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="graphics-object">
                       <title>Mail</title>
@@ -9093,9 +9095,9 @@
               </a>
             </div>
             <div class="v19 ps254 s310 c45 z244">
-              <input type="text" id="url-input"   value="{{ current_url }}" name="text" class="input4">
+              <input type="text" id="url-input" value="{{ current_url }}" name="text" class="input4">
             </div>
-            <div id='copy-button'  class="v20 ps255 s311 c56 z245 f104">
+            <div id='copy-button' class="v20 ps255 s311 c56 z245 f104">
               <p id="copy-status">Copy link</p>
             </div>
           </div>
@@ -9113,19 +9115,19 @@
 
       // Use the Clipboard API to copy the URL to the clipboard
       navigator.clipboard.writeText(urlToCopy).then(function () {
-          // Update the text of the "copy-status" element
-          document.getElementById("copy-status").textContent = "Copied!";
+        // Update the text of the "copy-status" element
+        document.getElementById("copy-status").textContent = "Copied!";
 
-          // Hide the message after 2 seconds
-          setTimeout(function () {
-              document.getElementById("copy-status").textContent = "";
-              document.getElementById("copy-button").textContent = "Copy Link";
-          }, 2000);
+        // Hide the message after 2 seconds
+        setTimeout(function () {
+          document.getElementById("copy-status").textContent = "";
+          document.getElementById("copy-button").textContent = "Copy Link";
+        }, 2000);
       }).catch(function (err) {
-          // Handle errors, if any
-          console.error('Failed to copy text: ', err);
+        // Handle errors, if any
+        console.error('Failed to copy text: ', err);
       });
-  });
+    });
   </script>
   <script>
     !(function () {
@@ -9886,7 +9888,7 @@ END:VCARD
 
 
 
-    
+
 
   </script>
 
