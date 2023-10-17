@@ -222,7 +222,7 @@ def update_user():
             user=user_list[0]
             return render_template('update.html',user=user)
     except Exception as err:
-            return render_template('error.html',user=user)   
+            return render_template('error.html')   
     
 @app.route('/register', methods=['GET', 'POST'])
 def register():
