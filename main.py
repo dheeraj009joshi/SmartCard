@@ -1,23 +1,14 @@
 from flask import Flask, render_template, request, jsonify,redirect,session,url_for
 import json
-# from urllib.parse import quote
+from pymongo import MongoClient
 import os
-# from flask_pymongo import PyMongo
-# from all_users import users
+
 app = Flask(__name__, static_folder='static')
-# app.config["MONGO_URI"] = "mongodb+srv://dlovej009:Dheeraj2006@cluster0.dnu8vna.mongodb.net/?retryWrites=true&w=majority/myDb"
-# url="mongodb+srv://dlovej009:Dheeraj2006@cluster0.dnu8vna.mongodb.net/?retryWrites=true&w=majority"
-
-# cluster=MongoClient(url)
-# db=cluster['myDb']
-# collection=db['users']
+uri = "mongodb+srv://dlovej009:Dheeraj2006@cluster0.dnu8vna.mongodb.net/?retryWrites=true&w=majority"
+client = MongoClient(uri)
+db = client['myDb']
+collection = db['users']
 app.secret_key = 'smart_card'
-# mongo = PyMongo(app)
-# from all_users import users
-# users = list(collection.users.find({}))
-
-# all_users = users
-# print(all_users)
 
 @app.route('/')
 def home():
@@ -27,11 +18,7 @@ def home():
 @app.route('/<user_id>')
 def index(user_id):
     current_url = request.url
-    from all_users import users
-    user_list  =[]
-    for i in users:
-        if i["UserID"]==user_id:
-            user_list.append(i)
+    user_list=list(collection.find({"UserID": user_id}))
     if user_list:
       if user_list[0]['Authentication']['Status_of_data'] == True:
             user_list[0].pop("_id",None)
@@ -49,8 +36,6 @@ def index(user_id):
         
        
     else:
-        # return "404 not valid card"
-        # # No users found for the given email
         return render_template('sign_up_form.html',user_id=user_id,current_url=current_url)
     
     
@@ -63,15 +48,15 @@ def logout():
 @app.route("/login", methods=['GET', 'POST'])  
 def login():
     try:
-        from all_users import users
+        print("this is login")
         if request.method == 'POST':
             username = request.form['username']
             password = request.form['password']
-            userS  =[]
-            for i in users:
-                if i["Authentication"]["Username"]==username:
-                    userS.append(i)
-            # users = list(collection.users.find({"Authentication.Username": username}))
+            # userS  =[]
+            # for i in users:
+            #     if i["Authentication"]["Username"]==username:
+            #         userS.append(i)
+            userS = list(collection.find({"Authentication.Username": username}))
             print(userS)
             if username in userS[0]['Authentication']['Username'] and userS[0]['Authentication']['Password'] == password:
                 userS[0].pop("_id",None)
@@ -89,7 +74,6 @@ def login():
 @app.route("/update", methods=['GET', 'POST']) 
 def update_user():
     try:
-        from all_users import users
         if request.method == 'POST':
             print(request.referrer)
             profile_image = request.files['ProfileImage']
@@ -196,20 +180,20 @@ def update_user():
             update_operation = {
             "$set": userRecord
         }
-            user =None
-            index=0
-            for i in users:
-                if i["UserID"]==uid:
-                    user=i
-                    break
-                index+=1 
-            users[index]= userRecord 
-            f=open("all_users.py",'w',encoding='utf-8')
-            f.write("users = "+str(users))
-            f.close() 
+            # user =None
+            # index=0
+            # for i in users:
+            #     if i["UserID"]==uid:
+            #         user=i
+            #         break
+            #     index+=1 
+            # users[index]= userRecord 
+            # f=open("all_users.py",'w',encoding='utf-8')
+            # f.write("users = "+str(users))
+            # f.close() 
             # # # # # # set user = userdetails
-            # filter_criteria = {"UserID": uid}
-            # collection.users.update_one(filter_criteria, update_operation)
+            filter_criteria = {"UserID": uid}
+            collection.update_one(filter_criteria, update_operation)
             return  redirect(f"/{uid}")
         else:
             print(request.referrer)
@@ -218,8 +202,8 @@ def update_user():
             for i in users:
                 if i["UserID"]==uid:
                     user_list.append(i)
-            # users = collection.users.find({"UserID": uid})
-            user=user_list[0]
+            users = collection.find({"UserID": uid})
+            user=users[0]
             return render_template('update.html',user=user)
     except Exception as err:
             return render_template('error.html')   
@@ -317,14 +301,10 @@ def register():
                 }
             }
             # users.append(userRecord)
-            users.append(userRecord)
-            # collection.users.insert_one(userRecord)
-            f=open("all_users.py",'w',encoding='utf-8')
-            f.write("users = "+str(users))
-            f.close()
+            # users.append(userRecord)
+            collection.insert_one(userRecord)
+            print("done")
             return  redirect(f"/{uid}")
-            
-        
         else:
             return "non post"
     except Exception as err:
@@ -337,13 +317,12 @@ def gallery():
         urlsss=request.url.split("/")
         urlsss[-1]=uid
         current_url ='/'.join(urlsss)
-        from all_users import users
         print(request.referrer)
         user_list  =[]
         for i in users:
             if i["UserID"]==uid:
                 user_list.append(i)
-        # users = collection.users.find({"UserID": uid})
+        users = collection.users.find({"UserID": uid})
         user=user_list[0] 
         return render_template("gallery.html",user=user,current_url=current_url)
     
