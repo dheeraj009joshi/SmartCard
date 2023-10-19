@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, jsonify,redirect,session,url_
 import json
 from pymongo import MongoClient
 import os
+from functions import upload_profile_cover_to_aws
+from functions import upload_gallery_to_aws
 
 app = Flask(__name__, static_folder='static')
 uri = "mongodb+srv://dlovej009:Dheeraj2006@cluster0.dnu8vna.mongodb.net/?retryWrites=true&w=majority"
@@ -76,6 +78,7 @@ def update_user():
     try:
         if request.method == 'POST':
             print(request.referrer)
+            uid=request.form.get('UserID')
             profile_image = request.files['ProfileImage']
             cover_image = request.files['CoverImage']
             gallery_1=request.files['GalleryImg1']
@@ -83,29 +86,63 @@ def update_user():
             gallery_3=request.files['GalleryImg3']
             gallery_4=request.files['GalleryImg4']
             gallery_5=request.files['GalleryImg5']
-            try:
-                # Save the uploaded files to a desired location
-                profile_image.save(f'static/profile_cover_photos/{profile_image.filename}')
-                cover_image.save(f'static/profile_cover_photos/{cover_image.filename}')
-            except:
-                pass
-            try:
-                gallery_1.save(f'static/gallery_photos/{gallery_1.filename}')
-                gallery_2.save(f'static/gallery_photos/{gallery_2.filename}')
-                gallery_3.save(f'static/gallery_photos/{gallery_3.filename}')
-                gallery_4.save(f'static/gallery_photos/{gallery_4.filename}')
-                gallery_5.save(f'static/gallery_photos/{gallery_5.filename}')
-            except:
-                pass
-            uid=request.form.get('UserID')
+            profile_image.save("pf.jpg")
+            cover_image.save("cover.jpg")
+            gallery_1.save("G1.jpg")
+            gallery_2.save("G2.jpg")
+            gallery_3.save("G3.jpg")
+            gallery_4.save("G4.jpg")
+            gallery_5.save("G5.jpg")
+            if request.files['ProfileImage'].filename != '':
+                profile_image_=upload_profile_cover_to_aws('pf.jpg','smart-card-bixcube',f'{uid}_profile_image.jpg')
+                profile_image_url=profile_image_['url']
+            elif request.files['ProfileImage'].filename == '':
+                profile_image_url=request.form.get("UserProfileDefault")
+                
+            if request.files['CoverImage'].filename != '':
+                CoverImage_=upload_profile_cover_to_aws('cover.jpg','smart-card-bixcube',f'{uid}_cover_image.jpg')
+                CoverImage=CoverImage_['url']
+            elif request.files['CoverImage'].filename == '':
+                CoverImage=request.form.get("UserCoverDefault")
+                
+            if request.files['GalleryImg1'].filename != '':
+                GalleryImg1_=upload_profile_cover_to_aws('G1.jpg','smart-card-bixcube',f'{uid}_g1.jpg')
+                GalleryImg1=GalleryImg1_['url']
+            elif request.files['GalleryImg1'].filename == '':
+                GalleryImg1=request.form.get("DefaultGalleryImg1")
+                
+            if request.files['GalleryImg2'].filename != '':
+                GalleryImg2_=upload_profile_cover_to_aws('G2.jpg','smart-card-bixcube',f'{uid}_g2.jpg')
+                GalleryImg2=GalleryImg2_['url']
+            elif request.files['GalleryImg2'].filename == '':
+                GalleryImg2=request.form.get("DefaultGalleryImg2")
+                
+            if request.files['GalleryImg3'].filename != '':
+                GalleryImg3_=upload_profile_cover_to_aws('G3.jpg','smart-card-bixcube',f'{uid}_g3.jpg')
+                GalleryImg3=GalleryImg3_['url']
+            elif request.files['GalleryImg3'].filename == '':
+                GalleryImg3=request.form.get("DefaultGalleryImg3")
+                
+            if request.files['GalleryImg4'].filename != '':
+                GalleryImg4_=upload_profile_cover_to_aws('G4.jpg','smart-card-bixcube',f'{uid}_g4.jpg')
+                GalleryImg4=GalleryImg4_['url']
+            elif request.files['GalleryImg4'].filename == '':
+                GalleryImg4=request.form.get("DefaultGalleryImg4")
+                
+            if request.files['ProfileImage'].filename != '':
+                GalleryImg5_=upload_profile_cover_to_aws('pf.jpg','smart-card-bixcube',f'{uid}_g5.jpg')
+                GalleryImg5=GalleryImg5_['url']
+            elif request.files['GalleryImg5'].filename == '':
+                GalleryImg5=request.form.get("DefaultGalleryImg5")
+            
             print(uid)
             print('this is post request')
             userRecord={
                 "UserID":uid,
                 "FirstName":request.form.get("FName"),
                 "LastName": request.form.get("LName"),
-                "ProfileImage":f"static/profile_cover_photos/{profile_image.filename}",
-                "CoverImage":f"static/profile_cover_photos/{cover_image.filename}",
+                "ProfileImage":profile_image_url,
+                "CoverImage":CoverImage,
                 "Contact": request.form.get("Contact"),
                 "DOB":request.form.get("DOB"),
                 "BusinessName": request.form.get("BusinessName"),
@@ -135,11 +172,11 @@ def update_user():
                 },
 
                 "Gallery": {
-                    "IMG1":f"static/gallery_photos/{gallery_1.filename}",
-                    "IMG2":f"static/gallery_photos/{gallery_2.filename}",
-                    "IMG3":f"static/gallery_photos/{gallery_3.filename}",
-                    "IMG4":f"static/gallery_photos/{gallery_4.filename}",
-                    "IMG5":f"static/gallery_photos/{gallery_5.filename}",
+                    "IMG1":GalleryImg1,
+                    "IMG2":GalleryImg2,
+                    "IMG3":GalleryImg3,
+                    "IMG4":GalleryImg4,
+                    "IMG5":GalleryImg5,
                 },
                 "Payment": {
                     # "QRImage":"QRImage.jpg",
@@ -162,58 +199,28 @@ def update_user():
                     "Status_of_data": True,
                 }
             }
-            if userRecord['ProfileImage']=='static/profile_cover_photos/':
-                userRecord['ProfileImage']=request.form.get("UserProfileDefault")
-            if userRecord['CoverImage']=='static/profile_cover_photos/':
-                userRecord['CoverImage']=request.form.get("UserCoverDefault")
-            if userRecord['Gallery']['IMG1']=='static/gallery_photos/':
-                userRecord['Gallery']['IMG1']=request.form.get("DefaultGalleryImg1")
-            if userRecord['Gallery']['IMG2']=='static/gallery_photos/':
-                userRecord['Gallery']['IMG2']=request.form.get("DefaultGalleryImg2")
-            if userRecord['Gallery']['IMG3']=='static/gallery_photos/':
-                userRecord['Gallery']['IMG3']=request.form.get("DefaultGalleryImg3")
-            if userRecord['Gallery']['IMG4']=='static/gallery_photos/':
-                userRecord['Gallery']['IMG4']=request.form.get("DefaultGalleryImg4")
-            if userRecord['Gallery']['IMG5']=='static/gallery_photos/':
-                userRecord['Gallery']['IMG5']=request.form.get("DefaultGalleryImg5")
-        
             update_operation = {
             "$set": userRecord
         }
-            # user =None
-            # index=0
-            # for i in users:
-            #     if i["UserID"]==uid:
-            #         user=i
-            #         break
-            #     index+=1 
-            # users[index]= userRecord 
-            # f=open("all_users.py",'w',encoding='utf-8')
-            # f.write("users = "+str(users))
-            # f.close() 
-            # # # # # # set user = userdetails
+
             filter_criteria = {"UserID": uid}
             collection.update_one(filter_criteria, update_operation)
             return  redirect(f"/{uid}")
         else:
             print(request.referrer)
             uid=request.referrer.split("/")[-1]
-            user_list  =[]
-            for i in users:
-                if i["UserID"]==uid:
-                    user_list.append(i)
             users = collection.find({"UserID": uid})
             user=users[0]
             return render_template('update.html',user=user)
     except Exception as err:
-            return render_template('error.html')   
+            return str(err)
     
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     try:
-        from all_users import users
         if request.method == 'POST':
             print(request.referrer)
+            uid=request.referrer.split("/")[-1]
             profile_image = request.files['ProfileImage']
             cover_image = request.files['CoverImage']
             gallery_1=request.files['GalleryImg1']
@@ -221,27 +228,62 @@ def register():
             gallery_3=request.files['GalleryImg3']
             gallery_4=request.files['GalleryImg4']
             gallery_5=request.files['GalleryImg5']
-            try:
-                # Save the uploaded files to a desired location
-                profile_image.save(f'static/profile_cover_photos/{profile_image.filename}')
-                cover_image.save(f'static/profile_cover_photos/{cover_image.filename}')
-            except:
-                pass
-            try:
-                gallery_1.save(f'static/gallery_photos/{gallery_1.filename}')
-                gallery_2.save(f'static/gallery_photos/{gallery_2.filename}')
-                gallery_3.save(f'static/gallery_photos/{gallery_3.filename}')
-                gallery_4.save(f'static/gallery_photos/{gallery_4.filename}')
-                gallery_5.save(f'static/gallery_photos/ {gallery_5.filename}')
-            except:
-                pass
+            profile_image.save("pf.jpg")
+            cover_image.save("cover.jpg")
+            gallery_1.save("G1.jpg")
+            gallery_2.save("G2.jpg")
+            gallery_3.save("G3.jpg")
+            gallery_4.save("G4.jpg")
+            gallery_5.save("G5.jpg")
+            if request.files['ProfileImage'].filename != '':
+                profile_image_=upload_profile_cover_to_aws('pf.jpg','smart-card-bixcube',f'{uid}_profile_image.jpg')
+                profile_image_url=profile_image_['url']
+            elif request.files['ProfileImage'].filename == '':
+                profile_image_url=''
+                
+            if request.files['CoverImage'].filename != '':
+                CoverImage_=upload_profile_cover_to_aws('cover.jpg','smart-card-bixcube',f'{uid}_cover_image.jpg')
+                CoverImage=CoverImage_['url']
+            elif request.files['CoverImage'].filename == '':
+                CoverImage=''
+                
+            if request.files['GalleryImg1'].filename != '':
+                GalleryImg1_=upload_profile_cover_to_aws('G1.jpg','smart-card-bixcube',f'{uid}_g1.jpg')
+                GalleryImg1=GalleryImg1_['url']
+            elif request.files['GalleryImg1'].filename == '':
+                GalleryImg1=''
+                
+            if request.files['GalleryImg2'].filename != '':
+                GalleryImg2_=upload_profile_cover_to_aws('G2.jpg','smart-card-bixcube',f'{uid}_g2.jpg')
+                GalleryImg2=GalleryImg2_['url']
+            elif request.files['GalleryImg2'].filename == '':
+                GalleryImg2=''
+                
+            if request.files['GalleryImg3'].filename != '':
+                GalleryImg3_=upload_profile_cover_to_aws('G3.jpg','smart-card-bixcube',f'{uid}_g3.jpg')
+                GalleryImg3=GalleryImg3_['url']
+            elif request.files['GalleryImg3'].filename == '':
+                GalleryImg3=''
+                
+            if request.files['GalleryImg4'].filename != '':
+                GalleryImg4_=upload_profile_cover_to_aws('G4.jpg','smart-card-bixcube',f'{uid}_g4.jpg')
+                GalleryImg4=GalleryImg4_['url']
+            elif request.files['GalleryImg4'].filename == '':
+                GalleryImg4=''
+                
+            if request.files['ProfileImage'].filename != '':
+                GalleryImg5_=upload_profile_cover_to_aws('pf.jpg','smart-card-bixcube',f'{uid}_g5.jpg')
+                GalleryImg5=GalleryImg5_['url']
+            elif request.files['GalleryImg5'].filename == '':
+                GalleryImg5=''
+            
             uid=request.referrer.split("/")[-1]
             print('this is post request')
             userRecord={
                 "UserID":uid,
                 "FirstName":request.form.get("FName"),
                 "LastName": request.form.get("LName"),
-                "ProfileImage":f"static/profile_cover_photos/{profile_image.filename}",
+                "ProfileImage":profile_image_url['url'],
                 "CoverImage":f"static/profile_cover_photos/{cover_image.filename}",
                 "Contact": request.form.get("Contact"),
                 "DOB":request.form.get("DOB"),
@@ -273,11 +315,11 @@ def register():
                 },
 
                 "Gallery": {
-                    "IMG1":f"static/gallery_photos/{gallery_1.filename}",
-                    "IMG2":f"static/gallery_photos/{gallery_2.filename}",
-                    "IMG3":f"static/gallery_photos/{gallery_3.filename}",
-                    "IMG4":f"static/gallery_photos/{gallery_4.filename}",
-                    "IMG5":f"static/gallery_photos/{gallery_5.filename}",
+                    "IMG1":GalleryImg1,
+                    "IMG2":GalleryImg2,
+                    "IMG3":GalleryImg3,
+                    "IMG4":GalleryImg4,
+                    "IMG5":GalleryImg5,
                 },
                 "Payment": {
                     # "QRImage":"QRImage.jpg",
@@ -300,15 +342,14 @@ def register():
                     "Status_of_data": True,
                 }
             }
-            # users.append(userRecord)
-            # users.append(userRecord)
+         
             collection.insert_one(userRecord)
             print("done")
             return  redirect(f"/{uid}")
         else:
             return "non post"
     except Exception as err:
-        return render_template("error.html")
+        return str(err)
     
 @app.route("/gallery", methods=['GET', 'POST'])  
 def gallery(): 
@@ -318,12 +359,8 @@ def gallery():
         urlsss[-1]=uid
         current_url ='/'.join(urlsss)
         print(request.referrer)
-        user_list  =[]
-        for i in users:
-            if i["UserID"]==uid:
-                user_list.append(i)
-        users = collection.users.find({"UserID": uid})
-        user=user_list[0] 
+        users = collection.find({"UserID": uid})
+        user=users[0] 
         return render_template("gallery.html",user=user,current_url=current_url)
     
     except Exception as err:
