@@ -94,43 +94,43 @@ def update_user():
             gallery_4.save("G4.jpg")
             gallery_5.save("G5.jpg")
             if request.files['ProfileImage'].filename != '':
-                profile_image_=upload_profile_cover_to_aws('pf.jpg','smart-card-bixcube',f'{uid}_profile_image.jpg')
+                profile_image_=upload_profile_cover_to_aws('pf.jpg','bixid',f'{uid}_profile_image.jpg')
                 profile_image_url=profile_image_['url']
             elif request.files['ProfileImage'].filename == '':
                 profile_image_url=request.form.get("UserProfileDefault")
                 
             if request.files['CoverImage'].filename != '':
-                CoverImage_=upload_profile_cover_to_aws('cover.jpg','smart-card-bixcube',f'{uid}_cover_image.jpg')
+                CoverImage_=upload_profile_cover_to_aws('cover.jpg','bixid',f'{uid}_cover_image.jpg')
                 CoverImage=CoverImage_['url']
             elif request.files['CoverImage'].filename == '':
                 CoverImage=request.form.get("UserCoverDefault")
                 
             if request.files['GalleryImg1'].filename != '':
-                GalleryImg1_=upload_profile_cover_to_aws('G1.jpg','smart-card-bixcube',f'{uid}_g1.jpg')
+                GalleryImg1_=upload_profile_cover_to_aws('G1.jpg','bixid',f'{uid}_g1.jpg')
                 GalleryImg1=GalleryImg1_['url']
             elif request.files['GalleryImg1'].filename == '':
                 GalleryImg1=request.form.get("DefaultGalleryImg1")
                 
             if request.files['GalleryImg2'].filename != '':
-                GalleryImg2_=upload_profile_cover_to_aws('G2.jpg','smart-card-bixcube',f'{uid}_g2.jpg')
+                GalleryImg2_=upload_profile_cover_to_aws('G2.jpg','bixid',f'{uid}_g2.jpg')
                 GalleryImg2=GalleryImg2_['url']
             elif request.files['GalleryImg2'].filename == '':
                 GalleryImg2=request.form.get("DefaultGalleryImg2")
                 
             if request.files['GalleryImg3'].filename != '':
-                GalleryImg3_=upload_profile_cover_to_aws('G3.jpg','smart-card-bixcube',f'{uid}_g3.jpg')
+                GalleryImg3_=upload_profile_cover_to_aws('G3.jpg','bixid',f'{uid}_g3.jpg')
                 GalleryImg3=GalleryImg3_['url']
             elif request.files['GalleryImg3'].filename == '':
                 GalleryImg3=request.form.get("DefaultGalleryImg3")
                 
             if request.files['GalleryImg4'].filename != '':
-                GalleryImg4_=upload_profile_cover_to_aws('G4.jpg','smart-card-bixcube',f'{uid}_g4.jpg')
+                GalleryImg4_=upload_profile_cover_to_aws('G4.jpg','bixid',f'{uid}_g4.jpg')
                 GalleryImg4=GalleryImg4_['url']
             elif request.files['GalleryImg4'].filename == '':
                 GalleryImg4=request.form.get("DefaultGalleryImg4")
                 
             if request.files['ProfileImage'].filename != '':
-                GalleryImg5_=upload_profile_cover_to_aws('pf.jpg','smart-card-bixcube',f'{uid}_g5.jpg')
+                GalleryImg5_=upload_profile_cover_to_aws('pf.jpg','bixid',f'{uid}_g5.jpg')
                 GalleryImg5=GalleryImg5_['url']
             elif request.files['GalleryImg5'].filename == '':
                 GalleryImg5=request.form.get("DefaultGalleryImg5")
@@ -217,7 +217,7 @@ def update_user():
     
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    try:
+    # try:
         if request.method == 'POST':
             print(request.referrer)
             uid=request.referrer.split("/")[-1]
@@ -236,43 +236,43 @@ def register():
             gallery_4.save("G4.jpg")
             gallery_5.save("G5.jpg")
             if request.files['ProfileImage'].filename != '':
-                profile_image_=upload_profile_cover_to_aws('pf.jpg','smart-card-bixcube',f'{uid}_profile_image.jpg')
+                profile_image_=upload_profile_cover_to_aws('pf.jpg','bixid',f'{uid}_profile_image.jpg')
                 profile_image_url=profile_image_['url']
             elif request.files['ProfileImage'].filename == '':
                 profile_image_url=''
                 
             if request.files['CoverImage'].filename != '':
-                CoverImage_=upload_profile_cover_to_aws('cover.jpg','smart-card-bixcube',f'{uid}_cover_image.jpg')
+                CoverImage_=upload_profile_cover_to_aws('cover.jpg','bixid',f'{uid}_cover_image.jpg')
                 CoverImage=CoverImage_['url']
             elif request.files['CoverImage'].filename == '':
                 CoverImage=''
                 
             if request.files['GalleryImg1'].filename != '':
-                GalleryImg1_=upload_profile_cover_to_aws('G1.jpg','smart-card-bixcube',f'{uid}_g1.jpg')
+                GalleryImg1_=upload_profile_cover_to_aws('G1.jpg','bixid',f'{uid}_g1.jpg')
                 GalleryImg1=GalleryImg1_['url']
             elif request.files['GalleryImg1'].filename == '':
                 GalleryImg1=''
                 
             if request.files['GalleryImg2'].filename != '':
-                GalleryImg2_=upload_profile_cover_to_aws('G2.jpg','smart-card-bixcube',f'{uid}_g2.jpg')
+                GalleryImg2_=upload_profile_cover_to_aws('G2.jpg','bixid',f'{uid}_g2.jpg')
                 GalleryImg2=GalleryImg2_['url']
             elif request.files['GalleryImg2'].filename == '':
                 GalleryImg2=''
                 
             if request.files['GalleryImg3'].filename != '':
-                GalleryImg3_=upload_profile_cover_to_aws('G3.jpg','smart-card-bixcube',f'{uid}_g3.jpg')
+                GalleryImg3_=upload_profile_cover_to_aws('G3.jpg','bixid',f'{uid}_g3.jpg')
                 GalleryImg3=GalleryImg3_['url']
             elif request.files['GalleryImg3'].filename == '':
                 GalleryImg3=''
                 
             if request.files['GalleryImg4'].filename != '':
-                GalleryImg4_=upload_profile_cover_to_aws('G4.jpg','smart-card-bixcube',f'{uid}_g4.jpg')
+                GalleryImg4_=upload_profile_cover_to_aws('G4.jpg','bixid',f'{uid}_g4.jpg')
                 GalleryImg4=GalleryImg4_['url']
             elif request.files['GalleryImg4'].filename == '':
                 GalleryImg4=''
                 
             if request.files['ProfileImage'].filename != '':
-                GalleryImg5_=upload_profile_cover_to_aws('pf.jpg','smart-card-bixcube',f'{uid}_g5.jpg')
+                GalleryImg5_=upload_profile_cover_to_aws('pf.jpg','bixid',f'{uid}_g5.jpg')
                 GalleryImg5=GalleryImg5_['url']
             elif request.files['GalleryImg5'].filename == '':
                 GalleryImg5=''
@@ -283,8 +283,8 @@ def register():
                 "UserID":uid,
                 "FirstName":request.form.get("FName"),
                 "LastName": request.form.get("LName"),
-                "ProfileImage":profile_image_url['url'],
-                "CoverImage":f"static/profile_cover_photos/{cover_image.filename}",
+                "ProfileImage":profile_image_url,
+                "CoverImage":CoverImage,
                 "Contact": request.form.get("Contact"),
                 "DOB":request.form.get("DOB"),
                 "BusinessName": request.form.get("BusinessName"),
@@ -348,8 +348,9 @@ def register():
             return  redirect(f"/{uid}")
         else:
             return "non post"
-    except Exception as err:
-        return str(err)
+    # except Exception as err:
+    #     print
+    #     return str(err)
     
 @app.route("/gallery", methods=['GET', 'POST'])  
 def gallery(): 
@@ -374,4 +375,8 @@ def contact():
 
   
 port = int(os.environ.get('PORT', 5000))
+
+
 app.run(debug=True, host='0.0.0.0',port=port)
+
+
