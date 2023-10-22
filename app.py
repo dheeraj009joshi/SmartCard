@@ -19,6 +19,7 @@ def home():
 
 @app.route('/<user_id>')
 def index(user_id):
+    print("i am in rout / ")
     current_url = request.url
     user_list=list(collection.find({"UserID": user_id}))
     if user_list:
