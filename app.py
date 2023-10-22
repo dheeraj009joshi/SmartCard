@@ -15,7 +15,7 @@ app.secret_key = 'smart_card'
 @app.route('/')
 def home():
     print("bfklndsk/vnjdf;gjdmgk;ldfjgk;ldfsgjnfk;lgjdfkl;ggit asdhgfrnjgk;lfdsnjgdfsk;lgnjadfslk;hjtfhp")
-    return "this is home"
+    return render_template("default.html")
 
 @app.route('/<user_id>')
 def index(user_id):
