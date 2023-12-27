@@ -1,9 +1,16 @@
+import ssl
 from flask import Flask, render_template, request, jsonify,redirect,session,url_for
 import json
 from pymongo import MongoClient
 import os
 from functions import upload_profile_cover_to_aws
 from functions import upload_gallery_to_aws
+from flask import Flask, request
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+
 
 app = Flask(__name__, static_folder='static')
 uri = "mongodb+srv://dlovej009:Dheeraj2006@cluster0.dnu8vna.mongodb.net/?retryWrites=true&w=majority"
@@ -12,14 +19,47 @@ db = client['myDb']
 collection = db['users']
 app.secret_key = 'smart_card'
 
+
+
+def send_email(subject, body):
+    try:
+        sender_email = 'support@bixid.in'
+        sender_password = 'support@bixid'
+        recipient_email = 'dlovej009@gmail.com'
+        msg = MIMEMultipart()
+        msg['From'] = sender_email
+        msg['To'] = recipient_email
+        msg['Subject'] = subject
+        msg.attach(MIMEText(body, 'plain'))
+        context = ssl.create_default_context()
+        with smtplib.SMTP_SSL('mum2.hostarmada.net', 465, context=context) as server:
+            # server.starttls()
+            print(' email server started ')
+            server.login(sender_email, sender_password)
+            print(' email logged in  ')
+            server.sendmail(sender_email, recipient_email, msg.as_string())
+            data={"Status": "Success","Message":"Thanks for placing your request, our customer success team will ping you shortly"}
+            return  data 
+    except Exception as e:
+        data= {"Status": "Fail","Message":f"There is some error contact to our customer care for support {e}"}
+        return data 
+
+
+
+
+
+
+
+
+
 @app.route('/')
 def home():
     print("bfklndsk/vnjdf;gjdmgk;ldfjgk;ldfsgjnfk;lgjdfkl;ggit asdhgfrnjgk;lfdsnjgdfsk;lgnjadfslk;hjtfhp")
-    return render_template("default.html")
+    return render_template("home.html")
 
 @app.route('/<user_id>')
 def index(user_id):
-    print("i am in rout / ")
+    # print("i am in rout / ")
     current_url = request.url
     user_list=list(collection.find({"UserID": user_id}))
     if user_list:
@@ -72,7 +112,7 @@ def login():
         else:
             return render_template('login.html')
     except Exception as err:
-        return render_template("error.html")
+        return render_template("error.html", error=err)
    
 @app.route("/update", methods=['GET', 'POST']) 
 def update_user():
@@ -272,7 +312,7 @@ def register():
             elif request.files['GalleryImg4'].filename == '':
                 GalleryImg4=''
                 
-            if request.files['ProfileImage'].filename != '':
+            if request.files['GalleryImg5'].filename != '':
                 GalleryImg5_=upload_profile_cover_to_aws('pf.jpg','bixid',f'{uid}_g5.jpg')
                 GalleryImg5=GalleryImg5_['url']
             elif request.files['GalleryImg5'].filename == '':
@@ -374,6 +414,28 @@ def gallery():
 def contact():
     return render_template("contact.html")
 
+@app.route('/select-model', methods=['GET', 'POST'])
+def select_model():
+    return render_template("select_model.html")
+
+
+@app.route('/customer-request', methods=['GET', 'POST'])
+def customer_request():
+    if request.method == 'POST':
+        print("this is post")
+        print(request.form)
+        contact_name = request.form.get('_Contact-name')
+        contact_phone = request.form.get('_Contact-phone')
+        contact_email = request.form.get('_Contact-email-reply-to')
+
+        # Compose email message
+        subject = 'New Contact Form Lead'
+        body = f'Contact Name: {contact_name}\nContact Phone: {contact_phone}\nContact Email: {contact_email}'
+        print(subject)
+        data=send_email(subject, body)
+        return render_template("customer_request.html", data=data) 
+    else:
+        return render_template("customer_request.html")
   
 port = int(os.environ.get('PORT', 5000))
 

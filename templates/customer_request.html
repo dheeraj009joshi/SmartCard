@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<title>bixid-customer-request</title>
+<meta name="referrer" content="same-origin">
+<link rel="canonical" href="https://bixid.in/bixid-customer-request.html">
+<meta name="robots" content="max-image-preview:large">
+<meta name="twitter:card" content="summary">
+<meta property="og:title" content="bixid-customer-request">
+<meta property="og:type" content="website">
+<meta name="viewport" content="width=320">
+<link rel="stylesheet" href=" {{ url_for('static', filename='assets/css/site.6c86bc.css') }}  " type="text/css">
+<style>
+
+
+   
+
+    button[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        height: 100%;
+        width: 100%;
+        background: black;
+        color: white;
+    }
+    
+    button[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    
+   
+
+
+</style>
+</head>
+
+<body id="b1">
+{% if data %}
+
+{% endif %}
+<script>var p=document.createElement("P");p.innerHTML="&nbsp;",p.style.cssText="position:fixed;visible:hidden;font-size:100px;zoom:1",document.body.appendChild(p);var rsz=function(e){return function(){var r=Math.trunc(1e3/parseFloat(window.getComputedStyle(e).getPropertyValue("font-size")))/10,t=document.body;r!=t.style.getPropertyValue("--f")&&t.style.setProperty("--f",r)}}(p);if("ResizeObserver"in window){var ro=new ResizeObserver(rsz);ro.observe(p)}else if("requestAnimationFrame"in window){var raf=function(){rsz(),requestAnimationFrame(raf)};requestAnimationFrame(raf)}else setInterval(rsz,100);</script>
+
+
+
+
+<div data-block-group="0" class="v1 ps1 s1 c1 z1">
+<div class="ps2">
+</div>
+<div class="ps3 v1 s2">
+<div class="v2 ps4 s3 c2 z55">
+<p class="p1"><a href="index.html" class="f1">BixID<a href="index.html" class="f2">ID</a></a></p>
+</div>
+</div>
+</div>
+<div class="c29">
+<div class="ps1 v1 s159 z9">
+<div class="v2 ps49 s160">
+<div class="v2 ps5 s161 c2 z6">
+<p class="p1 f58">Nice choice, help us with your details and we will get back to you today</p>
+</div>
+<div class="v2 ps141 s162">
+<div id="popup19" style="visibility:hidden;transform:translate3d(-999999px,0,0)" class="popup v3 ps5 s98 c14 z11" data-popup-group="0" data-popup-type="0">
+<div class="v2 ps77 s99 c15 z41">
+<a onclick="return pop&&pop.closePopup('popup19',event)" style="cursor:pointer;" href="#" class="a1"></a>
+</div>
+<div class="v2 ps130 s149 c2 z111">
+<p class="p1 f52">Please enter the email address used to sign up</p>
+</div>
+<div class="v2 ps131 s150 c2 z112">
+<input type="email" placeholder="Email" name="Reset-email-input" autocorrect="off" autocapitalize="off" class="input12">
+</div>
+<div class="v2 ps132 s151 c2 z113">
+<p class="p1 f52">Please enter BixID card number printed behind your card</p>
+</div>
+<div class="v2 ps133 s150 c2 z110">
+<input type="email" placeholder="BixID card number" name="Reset-email-input" autocorrect="off" autocapitalize="off" class="input13">
+</div>
+<div class="v2 ps134 s163 z9">
+<div class="v4 ps5 s152 c19 z48 f53">
+<p>Submit</p>
+</div>
+<div class="v4 ps142 s152 c27 z5">
+<a onclick="pop.openClosePopup('popup19')" style="cursor:pointer;" href="#" class="a1 f53">Login now</a>
+</div>
+</div>
+</div>
+<form action="{{ url_for('customer_request') }}" method="post"   id="myForm" class="v2 ps143 s164 z54">
+<input type="hidden" name="nilmli">
+<div class="v2 ps5 s165 c2">
+<input type="text" placeholder="Your Name" name="Customer-name" required class="input14">
+</div>
+<div class="v2 ps137 s165 c2">
+<input type="number" placeholder="Phone number " name="Customer-phone" required class="input15">
+</div>
+<div class="v2 ps144 s165 c2">
+<input type="email" placeholder="eMail ID" name="Customer-phone-reply-to" required class="input16">
+</div>
+
+<div class="un7 v4 ps145 s166 c19">
+    <button type= "submit"> Submit</button> 
+   
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<div class="c8">
+</div>
+
+</body>
+</html>

@@ -10,7 +10,7 @@
   <meta property="og:title" content="bixid-template" />
   <meta property="og:type" content="website" />
   <meta name="viewport" content="width=320" />
-  <link rel="preload" href="css/HankenGrotesk[wght].woff2" as="font" crossorigin="" />
+  <link rel="preload" href="{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}" as="font" crossorigin="" />
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -91,7 +91,7 @@
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format('woff');
       font-weight: 200;
       font-style: normal
     }
@@ -99,7 +99,7 @@
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format('woff');
       font-weight: 400;
       font-style: normal
     }
@@ -107,14 +107,14 @@
     @font-face {
       font-display: block;
       font-family: "Lato";
-      src: url('css/Lato-Regular.woff2') format('woff2'), url('css/Lato-Regular.woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/Lato-Regular.woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/Lato-Regular.woff") }}') format('woff');
       font-weight: 400
     }
 
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format('woff');
       font-weight: 500;
       font-style: normal
     }
@@ -122,7 +122,7 @@
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format('woff');
       font-weight: 800;
       font-style: normal
     }
@@ -130,7 +130,7 @@
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format('woff');
       font-weight: 300;
       font-style: normal
     }
@@ -2445,7 +2445,7 @@
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format('woff');
       font-weight: 200;
       font-style: normal
     }
@@ -2453,7 +2453,7 @@
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format('woff');
       font-weight: 400;
       font-style: normal
     }
@@ -2461,14 +2461,14 @@
     @font-face {
       font-display: block;
       font-family: "Lato";
-      src: url('css/Lato-Regular.woff2') format('woff2'), url('css/Lato-Regular.woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/Lato-Regular.woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/Lato-Regular.woff") }}') format('woff');
       font-weight: 400
     }
 
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format('woff');
       font-weight: 500;
       font-style: normal
     }
@@ -2476,7 +2476,7 @@
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format('woff');
       font-weight: 800;
       font-style: normal
     }
@@ -2484,7 +2484,7 @@
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format('woff');
       font-weight: 300;
       font-style: normal
     }
@@ -4799,8 +4799,8 @@
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url("css/HankenGrotesk[wght].woff2") format("woff2"),
-        url("css/HankenGrotesk[wght].woff") format("woff");
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format("woff2"),
+        url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format("woff");
       font-weight: 200;
       font-style: normal;
     }
@@ -4808,8 +4808,8 @@
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url("css/HankenGrotesk[wght].woff2") format("woff2"),
-        url("css/HankenGrotesk[wght].woff") format("woff");
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format("woff2"),
+        url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format("woff");
       font-weight: 400;
       font-style: normal;
     }
@@ -4817,16 +4817,16 @@
     @font-face {
       font-display: block;
       font-family: "Lato";
-      src: url("css/Lato-Regular.woff2") format("woff2"),
-        url("css/Lato-Regular.woff") format("woff");
+      src: url('{{ url_for("static", filename="assets/css/Lato-Regular.woff2") }}') format("woff2"),
+        url('{{ url_for("static", filename="assets/css/Lato-Regular.woff") }}') format("woff");
       font-weight: 400;
     }
 
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url("css/HankenGrotesk[wght].woff2") format("woff2"),
-        url("css/HankenGrotesk[wght].woff") format("woff");
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format("woff2"),
+        url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format("woff");
       font-weight: 500;
       font-style: normal;
     }
@@ -4834,8 +4834,8 @@
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url("css/HankenGrotesk[wght].woff2") format("woff2"),
-        url("css/HankenGrotesk[wght].woff") format("woff");
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format("woff2"),
+        url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format("woff");
       font-weight: 800;
       font-style: normal;
     }
@@ -4843,8 +4843,8 @@
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url("css/HankenGrotesk[wght].woff2") format("woff2"),
-        url("css/HankenGrotesk[wght].woff") format("woff");
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format("woff2"),
+        url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format("woff");
       font-weight: 300;
       font-style: normal;
     }
@@ -6602,7 +6602,7 @@
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format('woff');
       font-weight: 200;
       font-style: normal
     }
@@ -6610,7 +6610,7 @@
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format('woff');
       font-weight: 400;
       font-style: normal
     }
@@ -6618,14 +6618,14 @@
     @font-face {
       font-display: block;
       font-family: "Lato";
-      src: url('css/Lato-Regular.woff2') format('woff2'), url('css/Lato-Regular.woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/Lato-Regular.woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/Lato-Regular.woff") }}') format('woff');
       font-weight: 400
     }
 
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format('woff');
       font-weight: 500;
       font-style: normal
     }
@@ -6633,7 +6633,7 @@
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format('woff');
       font-weight: 800;
       font-style: normal
     }
@@ -6641,7 +6641,7 @@
     @font-face {
       font-display: block;
       font-family: "Hanken Grotesk";
-      src: url('css/HankenGrotesk[wght].woff2') format('woff2'), url('css/HankenGrotesk[wght].woff') format('woff');
+      src: url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff2") }}') format('woff2'), url('{{ url_for("static", filename="assets/css/HankenGrotesk[wght].woff") }}') format('woff');
       font-weight: 300;
       font-style: normal
     }
@@ -8975,11 +8975,13 @@
                 class="a2"></a>
             </div>
             <div class="v19 ps244 s295 c45 z231">
+              <a href="phonepe://pay?pa=7877766297@ybl&amp;cu=INR">
               <picture>
                 <source srcset="{{ url_for('static', filename='assets/upi-logo-182.webp') }} 2x" type="image/webp">
                 <source srcset="{{ url_for('static', filename='assets/upi-logo-182.webp') }} 2x">
                 <img src="{{ url_for('static', filename='assets/upi-logo-182.webp') }}" loading="lazy" class="i39">
               </picture>
+              </a>
             </div>
             <div class="v19 ps244 s295 c45 z231">
               <picture>
